@@ -173,16 +173,16 @@ class _SkillInventoryState extends State<SkillInventory> {
             children: [
               Image.asset(
                 "images/zelda_icon.png",
-                width: 24,
-                height: 24,
+                width: 32,
+                height: 32,
                 errorBuilder: (context, error, stackTrace) =>
                 const Icon(Icons.error, size: 16),
               ),
               const SizedBox(width: 6),
               Image.asset(
                 item["icon"] as String? ?? "images/default_icon.png",
-                width: 24,
-                height: 24,
+                width: 32,
+                height: 32,
                 errorBuilder: (context, error, stackTrace) =>
                 const Icon(Icons.error, size: 16),
               ),
@@ -195,7 +195,7 @@ class _SkillInventoryState extends State<SkillInventory> {
               child: Text(
                 item["name"] as String? ?? "Unknown Skill",
                 style: GoogleFonts.pressStart2p(
-                  fontSize: 11,
+                  fontSize: 24,
                   color: item["color"] as Color,
                 ),
               ),
@@ -203,8 +203,8 @@ class _SkillInventoryState extends State<SkillInventory> {
 
             Image.asset(
                "images/sword.png",
-              width: 18,
-              height: 18,
+              width: 32,
+              height: 32,
               errorBuilder: (context, error, stackTrace) =>
               const Icon(Icons.error, size: 16),
             ),
@@ -214,7 +214,7 @@ class _SkillInventoryState extends State<SkillInventory> {
           Text(
             item["description"] as String? ?? "No description",
             style: GoogleFonts.pressStart2p(
-              fontSize: 7,
+              fontSize: 12,
               color: Colors.white,
             ),
           ),
@@ -222,7 +222,7 @@ class _SkillInventoryState extends State<SkillInventory> {
           Text(
             "USE: ${item["use"] as String? ?? "No use specified"}",
             style: GoogleFonts.pressStart2p(
-              fontSize: 7,
+              fontSize: 12,
               color: Colors.greenAccent,
             ),
           ),
@@ -230,16 +230,16 @@ class _SkillInventoryState extends State<SkillInventory> {
        Row(children: [
          Image.asset(
            "images/sheild.png",
-           width: 18,
-           height: 18,
+           width: 32,
+           height: 32,
            errorBuilder: (context, error, stackTrace) =>
            const Icon(Icons.error, size: 16),
          ),
 
          Flexible(
          child: Container(
-           width: 70,
-           height: 6,
+           width: 90,
+           height: 9,
            child: LinearProgressIndicator(
              value: (item["mastery"] as int? ?? 0) / 100,
              backgroundColor: Colors.grey,
@@ -251,7 +251,7 @@ class _SkillInventoryState extends State<SkillInventory> {
           Text(
             "${item["mastery"] as int? ?? 0}%",
             style: GoogleFonts.pressStart2p(
-              fontSize: 7,
+              fontSize: 12,
               color: Colors.white,
             ),
           ),

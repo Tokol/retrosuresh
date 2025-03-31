@@ -63,6 +63,10 @@ final List<Map<String, String>> collegeTestimonials = [
     'avatar': 'images/student4.webp',
     'position': 'Student',
   },
+
+
+
+
 ];
 
 
@@ -71,7 +75,7 @@ final List<Map<String, dynamic>> skillInventory = [
     "name": "Flutter Blitz",
     "icon": "images/flutter.png",
     "description": "Strikes with cross-platform app precision",
-    "use": "Built Doc Talk chat app for healthcare @Freelance (2022)",
+    "use": "Built Doc Talk complex chat app for health worker during pandemic @Freelance (2021)",
     "mastery": 95,
     "color": Colors.blue,
   },
@@ -79,31 +83,32 @@ final List<Map<String, dynamic>> skillInventory = [
     "name": "Java Juggernaut",
     "icon": "images/java.png",
     "description": "Crushes native Android challenges",
-    "use": "Powered Techno Dawn shopping app @Techno Dawn (2020)",
+    "use":  "Shipped 15+ Java-based native Android apps @Eton Technology (2016-2018)",
     "mastery": 90,
     "color": Colors.orange,
   },
   {
     "name": "React Native Ninja",
     "icon": "images/react.png",
-    "description": "Stealthily bridges iOS and Android",
-    "use": "Crafted Japanese client app @IGC Technology (2018)",
+    "description": "Stealthily bridges iOS and Android with masterful precision",
+    "use": "Forged a high-end, buttery-smooth UI/UX for a demanding Japanese client @IGC Technology (2018-2019)",
     "mastery": 85,
     "color": Colors.cyan,
   },
   {
     "name": "Dart Dynamo",
     "icon": "images/dart.png",
-    "description": "Fires rapid Flutter-powered solutions",
-    "use": "Launched Nepbay shopping app @Nepbay (2019)",
+    "description": "Bullseyes async puzzles like a Gerudo archer",
+    "use": "Cleared DSA labyrinths & Isolate shrines since Flutter's first release by Google (2017)",
     "mastery": 92,
     "color": Colors.teal,
   },
+
   {
     "name": "Firebase Forge",
     "icon": "images/firebase.png",
-    "description": "Ignites backend magic with ease",
-    "use": "Fueled Doc Talk with real-time data @Freelance (2022)",
+    "description": "Fires rapid Flutter-powered solutions with blazing efficiency",
+    "use": "Empowered 10+ apps with real-time Firebase magic (2019-Present)",
     "mastery": 88,
     "color": Colors.yellow,
   },
@@ -111,15 +116,15 @@ final List<Map<String, dynamic>> skillInventory = [
     "name": "Git Guru",
     "icon": "images/git.png",
     "description": "Masters version control like a pro",
-    "use": "Managed codebases @Eton Technology (2017)",
+    "use": "Rescued 10,000+ commits from the abyss (2016-Present)",
     "mastery": 90,
     "color": Colors.red,
   },
   {
     "name": "API Alchemist",
     "icon": "images/api.png",
-    "description": "Conjures seamless RESTful integrations",
-    "use": "Linked Nepbay Tourism app to services @Nepbay (2020)",
+    "description": "Turns REST, SOAP & sockets into digital gold",
+    "use": "Wired up countless number of APIs across industries (2016–Present) • From legacy systems to real-time magic",
     "mastery": 87,
     "color": Colors.purple,
   },
@@ -146,7 +151,7 @@ final List<Map<String, dynamic>> skillInventory = [
     "description": "Kicks blockchain into high gear",
     "use": "Explored blockchain for apps @Freelance (2022)",
     "mastery": 75, // Lower since it’s newer in your experience
-    "color": Colors.black,
+    "color": Colors.purpleAccent,
   },
   {
     "name": "IPFS Pathfinder",
@@ -159,11 +164,67 @@ final List<Map<String, dynamic>> skillInventory = [
   {
     "name": "ClientSync",
     "icon": "images/handshake.png",
-    "description": "Deploys apps with automated precision",
-    "use": "Streamlined Techno Dawn releases @Techno Dawn (2020)",
+    "description": "Translates ideas into real solutions with automated precision",
+  "use": "From coffee-shop consultations to polished deployments for diverse clients @Freelance (2016–Present)",
     "mastery": 86,
     "color": Colors.grey,
   },
+
+  {
+    "name": "Quest Leader",
+    "icon": "images/teamwork.png",
+    "description": "Assembles and rallies dev parties for epic projects",
+    "use": "Led 5+ cross-functional teams to deliver complex apps on deadline",
+    "mastery": 88,
+    "color": Colors.amber,
+  },
+
+  {
+    "name": "Lore Translator",
+    "icon": "images/communication.png",
+    "description": "Converts tech jargon into stakeholder-friendly tales",
+    "use": "Bridged 50+ client meetings from confusion to clarity (2016–Present)",
+    "mastery": 90,
+    "color": Colors.lightBlue,
+  },
+
+  {
+    "name": "Code Sage",
+    "icon": "images/mentor.png",
+    "description": "Levels up junior developers with ancient wisdom",
+    "use": "Mentored 10+ devs @Freelance & communities",
+    "mastery": 85,
+    "color": Colors.deepPurple,
+  },
+
+  {
+    "name": "Scrum Ninja",
+    "icon": "images/agile.png",
+    "description": "Sprints through deadlines without breaking stealth",
+    "use": "Shipped 20+ apps using Agile rituals (2017–Present)",
+    "mastery": 87,
+    "color": Colors.redAccent,
+  },
+
+  {
+    "name": "Puzzle Warden",
+    "icon": "images/problem-solving.png",
+    "description": "Unlocks impossible bugs with lateral thinking",
+    "use": "Solved 100+ critical production issues across projects",
+    "mastery": 93,
+    "color": Colors.tealAccent,
+  },
+
+  {
+    "name": "Tech Bard",
+    "icon": "images/speaking.png",
+    "description": "Turns complex concepts into engaging campfire stories",
+    "use": "Spoke at 5+ tech meetups about latest tech trends",
+    "mastery": 80,
+    "color": Colors.orangeAccent,
+  }
+
+
 
 
 ];

@@ -43,7 +43,7 @@ class _TurtleServicesState extends State<TurtleServices>
 
     // Play audio using just_audio
     await _audioPlayer.setAsset(turtleServices[index]['sound']);
-    await _audioPlayer.setVolume(0.05);
+    await _audioPlayer.setVolume(0.3);
     await _audioPlayer.play();
 
     await Future.delayed(const Duration(milliseconds: 500));
