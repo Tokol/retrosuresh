@@ -1,5 +1,6 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:suresh_portfilo/traveller_mod_screen.dart';
 import 'package:suresh_portfilo/widgets/streetfighter/StreetFighterSkills.dart';
 import 'arcade_machine.dart';
 import 'developer_mod_screen.dart';
@@ -52,6 +53,18 @@ class _ArcadeLandingState extends State<ArcadeLanding> {
             ),
           );
         }
+
+        if(player=='Traveller'){
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder:(context)=> TravellerModScreen(
+                onBack: () => Navigator.pop(context)
+              )
+            )
+          );
+        }
+
       }
     });
   }

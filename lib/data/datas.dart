@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import '../models/testimonals.dart';
 final List<String> storyText = [
   "I started as a curious student and ended up addicted—to teaching! Now, I turn mobile programming into an adventure, where every line of code sparks excitement.",
 
@@ -44,17 +46,17 @@ final List<Map<String, String>> collegeTestimonials = [
   },
 
   {
-    'name': 'Colleague C',
-    'text': 'A true professional with passion!',
+    'name': 'Sanjana Prajapati,',
+    'text': 'He’s got that perfect mix of awesome humor and serious dedication, making every class a blast! Plus, we love how he brings his own projects into the mix—it’s inspiring and keeps things real.',
     'avatar': 'images/student3.webp',
-    'position': 'Colleague',
+    'position': '6th Sem ICMS',
   },
 
   {
-    'name': 'Student B',
-    'text': 'The best teacher—always engaging!',
+    'name': 'Dipendra Thapa',
+    'text': 'Learning Java and Android Studio under Sures Lama (sir) was a transformative experience. Their passion, clarity, and hands-on approach made complex concepts feel simple and engaging. Beyond technical skills, they instilled confidence and a problem-solving mindset that will stay with me forever. A truly inspiring mentor! Truly an inspiring mentor!',
     'avatar': 'images/student2.webp',
-    'position': 'Student',
+    'position': 'Student at London College',
   },
 
   {
@@ -311,3 +313,32 @@ final List<Map<String, dynamic>> turtleServices = [
     'service_icon': 'images/ai_agent.png'
   },
 ];
+
+final List<Testimonial> developerTestimonials = [Testimonial(
+  name: "Nabin Mahara",
+  photo: "images/student1.webp",
+  quote: "Suresh Lama Sir makes coding an adventure!",
+  position: "Final Year Student",
+  organization: "London College",
+),
+  Testimonial(
+    name: "Colleague C",
+    photo: "images/student3.webp",
+    quote: "A true professional with passion!",
+    position: "Colleague",
+    organization: "[Org Name]",
+  ),
+  Testimonial(
+    name: "Nabin Mahara",
+    photo: "images/student1.webp",
+    quote: "Suresh Lama Sir makes coding an adventure!",
+    position: "Final Year Student",
+    organization: "London College",
+  ),
+  Testimonial(
+    name: "Colleague C",
+    photo: "images/student3.webp",
+    quote: "A true professional with passion!",
+    position: "Colleague",
+    organization: "[Org Name]",
+  ),];
