@@ -3,6 +3,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:suresh_portfilo/widgets/space_invaders/space_invaders_form.dart';
 import 'package:suresh_portfilo/widgets/space_invaders/space_invaders_game.dart';
+import 'package:http/http.dart' as http;
 
 class SpaceInvadersMessageBlaster extends StatefulWidget {
   final double scale;
@@ -129,6 +130,7 @@ class _SpaceInvadersMessageBlasterState
   void _launchGame() {
     if (_formKey.currentState!.validate()) {
       // Reset all game states
+      _sendEmail();
       _explosionController.reset();
       _projectileController.reset();
 
@@ -152,6 +154,40 @@ class _SpaceInvadersMessageBlasterState
       _errorPlayer.play();
     }
   }
+
+
+  Future<void> _sendEmail() async {
+    final uri = Uri.parse('https://emailserver.walkershive.com.np/api/email/send');
+
+
+
+    final request = http.MultipartRequest('POST', uri);
+    request.fields['token'] = 'S2JEtxvSeelRWpEolVCnYd5kVThLRc1FVpDw1ZaOWVNSiZ3B3imuGG18bO87';
+    request.fields['mail_to_address'] = 'lamasuresh9841955416@gmail.com'; // you can change this to fixed or input
+    request.fields['mail_data'] = '''
+Name: ${_nameController.text.trim()}
+Email: ${_emailController.text.trim()}
+
+Message:
+${_messageController.text.trim()}
+''';
+
+    request.fields['subject'] = 'Message from Portfolio website contact section ';
+    request.fields['mail_category'] = '1'; // assuming '1' is default category
+    request.fields['cc[]'] = 'lamasuresh9841955416@gmail.com';
+
+    try {
+      final response = await request.send();
+      if (response.statusCode == 200) {
+        debugPrint('✅ Email sent successfully');
+      } else {
+        debugPrint('❌ Failed to send email. Status: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('❌ Error sending email: $e');
+    }
+  }
+
 
   void _fireProjectile() {
     if (!_isProjectileFired) {

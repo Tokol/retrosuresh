@@ -1,6 +1,8 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:suresh_portfilo/widgets/pixel_border.dart';
+import 'package:suresh_portfilo/widgets/robochat.dart';
 
 class RetroScreenWrapper extends StatefulWidget {
   final String title;
@@ -84,7 +86,51 @@ class _RetroScreenWrapperState extends State<RetroScreenWrapper> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  SizedBox(width: 40 * imageScale),
+                  GestureDetector(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (_) => const RoboChatPopup(),
+                      );
+                    },
+                    child: PixelBorderBox(
+
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(
+                              fit: BoxFit.cover,
+                              'images/robo.png',
+                              width: 56 * imageScale,
+                              height: 56 * imageScale,
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.smart_toy, color: Colors.white, size: 36);
+                              },
+                            ),
+                            const SizedBox(width: 8),
+                            Text(
+                              'Talk to my AI Assistant',
+                              style: GoogleFonts.pressStart2p(
+                                fontSize: 6 * imageScale,
+                                color: Colors.white,
+                                shadows: [
+                                  Shadow(
+                                    color: Colors.cyanAccent.withOpacity(0.7),
+                                    blurRadius: 10,
+                                    offset: Offset(0, 0),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+
+
                 ],
               ),
             ),
@@ -162,21 +208,97 @@ class _BackButtonState extends State<_BackButton> with SingleTickerProviderState
         builder: (context, child) {
           return Transform.scale(
             scale: _scaleAnimation.value,
-            child: Image.asset(
-              'images/back_icon.png',
-              width: 40 * widget.imageScale,
-              height: 40 * widget.imageScale,
-              errorBuilder: (context, error, stackTrace) {
-                return const Icon(
-                  Icons.arrow_back,
-                  color: Colors.white,
-                  size: 40,
-                );
-              },
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                // Continuous animated dots (looped)
+                DotFade(offsetFactor: 0.0, size: 6 * widget.imageScale),
+                const SizedBox(width: 4),
+                DotFade(offsetFactor: 0.2, size: 6 * widget.imageScale),
+                const SizedBox(width: 4),
+                DotFade(offsetFactor: 0.4, size: 6 * widget.imageScale),
+                const SizedBox(width: 8),
+                // Pac-Man Icon
+                Padding(
+                  padding: const EdgeInsets.only(left: 4),
+                  child: Image.asset(
+                    'images/back_icon.png',
+                    width: 40 * widget.imageScale,
+                    height: 40 * widget.imageScale,
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(
+                        Icons.arrow_back,
+                        color: Colors.white,
+                        size: 40,
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
           );
         },
       ),
     );
   }
+
+
 }
+
+
+class DotFade extends StatefulWidget {
+  final double size;
+  final double offsetFactor; // 0.0 to 1.0 for stagger control
+
+  const DotFade({Key? key, required this.offsetFactor, this.size = 6.0}) : super(key: key);
+
+  @override
+  _DotFadeState createState() => _DotFadeState();
+}
+
+class _DotFadeState extends State<DotFade> with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _opacity;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(milliseconds: 1000),
+      vsync: this,
+    )..repeat();
+
+    _opacity = Tween<double>(begin: 0.2, end: 1.0).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Interval(
+          widget.offsetFactor,
+          widget.offsetFactor + 0.5 > 1.0 ? 1.0 : widget.offsetFactor + 0.5,
+          curve: Curves.easeInOut,
+        ),
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _opacity,
+      child: Container(
+        width: widget.size,
+        height: widget.size,
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+        ),
+      ),
+    );
+  }
+}
+

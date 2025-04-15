@@ -1,5 +1,6 @@
 // traveller_mod_screen.dart
 import 'package:flutter/material.dart';
+import 'package:suresh_portfilo/widgets/foodie_section.dart';
 import 'package:suresh_portfilo/widgets/mono_no_aware_intro.dart';
 import 'package:suresh_portfilo/widgets/retro_mail_drop.dart';
 import 'package:suresh_portfilo/widgets/retro_screen_Wrapper.dart';
@@ -15,7 +16,7 @@ class TravellerModScreen extends StatefulWidget {
 }
 
 class _TravellerModScreenState extends State<TravellerModScreen> {
-  bool _showIntro = false;
+  bool _showIntro = true;
 
   @override
   void initState() {
@@ -62,7 +63,17 @@ class _TravellerModScreenState extends State<TravellerModScreen> {
                   ),
 
 
-
+              // SizedBox(height: 100,
+              //     width: size.width,
+              // child: Image.network('https://static.vecteezy.com/system/resources/previews/005/266/448/non_2x/retro-futuristic-background-free-vector.jpg', fit: BoxFit.cover),
+              // ),
+              //
+              // SizedBox(
+              //   height: size.height * 0.6,
+              //   child: FoodieArcadeGrid(
+              //     fontScale: fontScale,
+              //     imageScale: imageScale,
+              //   ),)
                   // Add more sections (Trekking, Postcards, etc.) here later
                 ],
               ),

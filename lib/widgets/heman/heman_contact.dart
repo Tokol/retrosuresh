@@ -5,7 +5,7 @@ import 'package:gif_view/gif_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:just_audio/just_audio.dart';
-
+import 'package:http/http.dart' as http;
 class HeManContactSection extends StatefulWidget {
   const HeManContactSection({Key? key}) : super(key: key);
 
@@ -93,6 +93,11 @@ class _HeManContactSectionState extends State<HeManContactSection>
     if (_nameController.text.isEmpty ||
         _emailController.text.isEmpty ||
         _projectController.text.isEmpty) {
+
+
+
+
+
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -105,6 +110,8 @@ class _HeManContactSectionState extends State<HeManContactSection>
       _playSound('sword_clink.mp3');
       return;
     }
+
+    _sendEmail();
 
     _playSound('heman_yell.wav');
     _powerUpController.forward();
@@ -120,8 +127,43 @@ class _HeManContactSectionState extends State<HeManContactSection>
     });
   }
 
+
+
+  Future<void> _sendEmail() async {
+    final uri = Uri.parse('https://emailserver.walkershive.com.np/api/email/send');
+
+
+
+    final request = http.MultipartRequest('POST', uri);
+    request.fields['token'] = 'S2JEtxvSeelRWpEolVCnYd5kVThLRc1FVpDw1ZaOWVNSiZ3B3imuGG18bO87';
+    request.fields['mail_to_address'] = 'lamasuresh9841955416@gmail.com'; // you can change this to fixed or input
+    request.fields['mail_data'] = '''
+Name: ${_nameController.text.trim()}
+Email: ${_emailController.text.trim()}
+
+Message:
+${_projectController.text.trim()}
+''';
+
+    request.fields['subject'] = 'Message from Portfolio website developer section ';
+    request.fields['mail_category'] = '1'; // assuming '1' is default category
+    request.fields['cc[]'] = 'lamasuresh9841955416@gmail.com';
+
+    try {
+      final response = await request.send();
+      if (response.statusCode == 200) {
+        debugPrint('✅ Email sent successfully');
+      } else {
+        debugPrint('❌ Failed to send email. Status: ${response.statusCode}');
+      }
+    } catch (e) {
+      debugPrint('❌ Error sending email: $e');
+    }
+  }
+
+
   void _resetForm() {
-    _playSound('power_up.wav');
+    _playSound('sword_swing.mp3');
     setState(() {
       _isSubmitted = false;
       _showSuccess = false;

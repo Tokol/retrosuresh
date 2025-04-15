@@ -60,10 +60,10 @@ final List<Map<String, String>> collegeTestimonials = [
   },
 
   {
-    'name': 'Student D',
+    'name': 'Dibya Kafle',
     'text': 'Brings energy to every lecture!',
     'avatar': 'images/student4.webp',
-    'position': 'Student',
+    'position': '3rd sem ICMS',
   },
 
 
@@ -315,32 +315,32 @@ final List<Map<String, dynamic>> turtleServices = [
 ];
 
 final List<Testimonial> developerTestimonials = [Testimonial(
-  name: "Nabin Mahara",
-  photo: "images/student1.webp",
-  quote: "Suresh Lama Sir makes coding an adventure!",
-  position: "Final Year Student",
-  organization: "London College",
+  name: "Takahiro funayama",
+  photo: "images/Takahiro funayama.png",
+  quote: "We are gratful for Mr. suresh Lama for outstanding work on the JICA Farmer Survey App, an offline data collection tool for farmers in the remote areas of Nepal. His Professionalism, dedication and technical expertise were instrumental in delivering a high-quality product successfully and efficiently",
+  position: "Project Lead",
+  organization: "JICA",
 ),
   Testimonial(
-    name: "Colleague C",
-    photo: "images/student3.webp",
-    quote: "A true professional with passion!",
-    position: "Colleague",
-    organization: "[Org Name]",
+    name: "Anish Sharma",
+    photo: "images/anish.png",
+    quote: "Mr. Suresh Lama turned our business chaos into a well-oiled machine with his IT wizardry. Thanks to his solution, we've automated so much, we've started to wonder if he can automated coffer breaks too. Highly recommended working with this genius.",
+    position: "CEO",
+    organization: "RED DOT Production",
   ),
   Testimonial(
-    name: "Nabin Mahara",
-    photo: "images/student1.webp",
-    quote: "Suresh Lama Sir makes coding an adventure!",
-    position: "Final Year Student",
-    organization: "London College",
+    name: "Niko Gurung",
+    photo: "images/niko.png",
+    quote: "Truly IT Consulting Wizard, a genius guy i am blessed to work with",
+    position: "CEO",
+    organization: "Walkers Hive",
   ),
   Testimonial(
-    name: "Colleague C",
-    photo: "images/student3.webp",
-    quote: "A true professional with passion!",
-    position: "Colleague",
-    organization: "[Org Name]",
+    name: "Dhiraj Lama",
+    photo: "images/dhiraj.png",
+    quote: "A Genuine, honest and hardworking guy.",
+    position: "CO-Founder",
+    organization: "Technovaglobal",
   ),];
 
 
@@ -354,7 +354,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Stood in awe before the Pyramids!',
     'story': 'As I stood before the Pyramids, time felt thick in the air—like it was watching me. These stones have outlasted empires, lovers, and sunsets. I couldn’t help but wonder: what will remain of us in 5,000 years? Maybe just a memory in the wind, or maybe nothing at all—and that’s oddly comforting.',
     'location': 'GIZA PLATEAU',
-    'date': 'MAR 15, 2023',
+    'date': 'FEB 5, 2022',
     'stampColor': Colors.orange,
   },
   {
@@ -364,7 +364,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Reached the peaks of the Himalayas!',
     'story': 'Trekking to Annapurna felt like shedding layers—not just of jackets, but of ego. Each step reminded me how small I am, yet how full that smallness can feel. The mountains whispered: *I was here before you, and I’ll be here after.* And somehow, that felt peaceful.',
     'location': 'ANNAPURNA RANGE',
-    'date': 'OCT 5, 2022',
+    'date': 'NOV 5, 2024',
     'stampColor': Colors.red,
   },
 
@@ -375,7 +375,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Stood still in the heart of Hanoi.',
     'story': 'The One Pillar Pagoda rose from a lotus pond. Built by Emperor Lý Thái Tông after a divine vision, it became a guardian of hope and rebirth. War tried to erase it. Time tried to forget it. Yet like the lotus, it blooms again. In its shadow, I saw the resilience of faith, the echo of dreams, and the stillness this rushing world forgets.',
     'location': 'Lotus Temple',
-    'date': 'JUN 12, 2023',
+    'date': 'JUN 10, 2023',
     'stampColor': Colors.amber,
   },
 
@@ -386,7 +386,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Shaktikhor Waterfall',
     'story': 'Shaktikhor in Chitwan felt like a short hike, but it opened a new chapter for me—my first on the humid trails of the Terai. It wasn’t just the heat I walked through, but the stories of the Chepang community, carved into the hills and whispers of the forest. Sometimes, the smallest trails take you farthest—from routine into discovery.',
     'location': 'SHAKTIKHOR WATERFALL',
-    'date': 'OCT 5, 2022',
+    'date': 'JUL 10, 2021',
     'stampColor': Colors.red,
   },
 
@@ -398,7 +398,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Bibliotheca Alexandrina',
     'story': 'Standing before the Bibliotheca Alexandrina, I felt the weight of lost knowledge and the hope of rediscovery. Once the heart of ancient wisdom, now reborn by the sea—it reminded me that even what’s lost can return in new form. Like journeys, like parts of ourselves.',
     'location': 'BIBLIOTHECA ALEXANDRINA',
-    'date': 'MAR 15, 2023',
+    'date': 'FEB 8, 2022',
     'stampColor': Colors.orange,
   },
 
@@ -410,7 +410,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Wat Traimit',
     'story': 'Inside Wat Traimit, I took a quiet selfie with a monk. No exchange, no performance—just two paths crossing in stillness. Behind us, the Golden Buddha reminded me how much strength can rest in silence, and how some moments speak without saying a word.',
     'location': 'WAT TRAIMIT',
-    'date': 'MAR 15, 2023',
+    'date': 'FEB 11, 2018',
     'stampColor': Colors.blueAccent,
   },
 
@@ -422,7 +422,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'GHANDRUK HIKE',
     'story': 'The Ghandruk hike offered stunning mountain views at every turn, but it was the quiet strength of the Gurung village that grounded me. A perfect mix of effort and ease—where culture met altitude, and every step felt like a reward.',
     'location': 'GHANDRUK HIKE',
-    'date': 'OCT 5, 2022',
+    'date': 'NOV 3, 2024',
     'stampColor': Colors.red,
   },
 
@@ -435,7 +435,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Hanoi Rickshaw Adventure',
     'story': 'Riding a rickshaw through Hanoi was chaos wrapped in charm. The streets buzzed, yet felt clean and calm in their own rhythm. My rickshaw puller, all smiles, moved like he was part of the flow—not rushing, just present. Sitting there, I didn’t just pass through the city—I really saw it.',
     'location': 'HANOI RICKSHAW ADVENTURE',
-    'date': 'JUN 12, 2023',
+    'date': 'JUN 14, 2023',
     'stampColor': Colors.amber,
   },
 
@@ -446,7 +446,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'LAGOON ROLLER COASTER',
     'story': 'In Malaysia, I was young, nervous, and curious—my first roller coaster ride. The irony? It was one of the oldest, built in the 1920s. It had carried many like me, across time. Funny how the oldest rides can spark the newest memories.',
     'location': 'LAGOON ROLLER COASTER',
-    'date': 'JUN 12, 2016',
+    'date': 'JAN 15, 2017',
     'stampColor': Colors.yellow,
   },
 
@@ -457,9 +457,21 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Shivapuri ',
   'story': 'In the heart of Shivapuri National Park, I took a break under the summer sun, enjoying a protein bar. Surrounded by the dense jungle, the peaceful rhythm of the forest reminded me of the strength in quiet persistence. With each step, the calm of the land made me want to keep walking further.',
   'location': 'SHIVAPURI NATIONAL PARK',
-    'date': 'OCT 5, 2022',
+    'date': 'OCT 5, 2021',
     'stampColor': Colors.red,
   },
+
+  {
+    'country': 'Vietnam',
+    'code': 'VN',
+    'image': 'images/travel/temple of literature.png',
+    'message': 'Literature Temple',
+    'story': 'With my soulmate-my best friend beside me, I stood at the Temple of Literature in Vietnam—built during a time when Confucian ideals from ancient China shaped the civilization of this region. In that quiet courtyard, we felt something deeper than history—a shared respect for wisdom, tradition, and the silent bond between old teachings and new journeys.',
+    'location': 'TEMPLE OF LITERATURE',
+    'date': 'JUN 16, 2023',
+    'stampColor': Colors.amber,
+  },
+
 
 
   {
@@ -469,7 +481,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Singapore waiting  ',
     'story': 'Outside that hotel elevator in Singapore, I looked fresh and ready—but behind the excitement was a quiet nervousness. I was younger, still finding my voice, yet curious enough to step out into the unknown. Looking back, it wasn’t just a city I explored, it was a version of myself becoming braver.',
     'location': 'Singapore: The Journey’s Start',
-    'date': 'OCT 5, 2016',
+    'date': 'MAR 5, 2016',
     'stampColor': Colors.teal,
   },
 
@@ -481,20 +493,10 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Chitwan ',
     'story': 'Leaving Chitwan, I held a “Chattri” hat, crafted by Tharu farmers for long days in the sun. What once shielded them now marked my quiet goodbye. Some goodbyes aren’t loud—they stay with you, gently, like a piece of the place that never truly leaves.',
     'location': 'GOODBYE CHITWAN',
-    'date': 'OCT 5, 2022',
+    'date': 'OCT 5, 2021',
     'stampColor': Colors.red,
   },
 
-  {
-    'country': 'Vietnam',
-    'code': 'VN',
-    'image': 'images/travel/temple of literature.png',
-    'message': 'Literature Temple',
-  'story': 'With my soulmate-my best friend beside me, I stood at the Temple of Literature in Vietnam—built during a time when Confucian ideals from ancient China shaped the civilization of this region. In that quiet courtyard, we felt something deeper than history—a shared respect for wisdom, tradition, and the silent bond between old teachings and new journeys.',
-    'location': 'TEMPLE OF LITERATURE',
-    'date': 'JUN 12, 2023',
-    'stampColor': Colors.amber,
-  },
 
   {
     'country': 'Egypt',
@@ -503,7 +505,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Whispers of the Nile',
     'story': 'On a quiet Nile cruise, beneath soft lights and swirling music, I sat—shy, still. The river moved like memory, like myth. It once fed kings and birthed gods, now it carries laughter, lights, and me. Strange how time slips—how a river that made history barely notices you passing.',
     'location': "DINNER CRUISE ON NILE RIVER",
-    'date': 'MAR 15, 2023',
+    'date': 'FEB 15, 2022',
     'stampColor': Colors.orange,
   },
 
@@ -516,7 +518,7 @@ final List<Map<String, dynamic>> postcards = [
     'message': 'Halong Bay by Sea',
     'story': 'I travelled the sea aboard a cruise hotel, drifting through Halong Bay—where limestone cliffs rose like myths and coastal life moved quietly at the edge of water. From sunrise to starlight, I watched the day breathe in and out. Somewhere between the waves and stillness, I felt the world slow down—just enough to notice it.',
     'location': 'HALONG BAY – CRUISE HOTEL',
-    'date': 'JUN 13, 2023',
+    'date': 'JUN 20, 2023',
     'stampColor': Colors.teal,
   }
 

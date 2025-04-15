@@ -115,7 +115,7 @@ class _WorldMapHubState extends State<WorldMapHub> with TickerProviderStateMixin
     SizedBox(height: 8 * widget.fontScale),
     _buildStatRow(Icons.people, 'Cultures: 10+'),
     SizedBox(height: 8 * widget.fontScale),
-    _buildStatRow(Icons.language, 'Languages: 6'),
+    _buildStatRow(Icons.language, 'Languages: 4'),
     ],
     ),
     ),

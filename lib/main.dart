@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart'; // ✅ Import provider
 import 'arcade_landing.dart';
+import 'providers/chat_provider.dart'; // ✅ Make sure this path is correct
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => ChatProvider()), // ✅ Chat provider
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -21,19 +29,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-// Blinking Text
-
-// Arcade Joystick (Now Functional)
-
-
-// Arcade Button
-
-
-// Portfolio Screen

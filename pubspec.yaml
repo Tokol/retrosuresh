@@ -43,6 +43,8 @@ dependencies:
   gif_view: ^1.0.1
   url_launcher: ^6.3.1
   country_flags: ^3.2.0
+  provider: ^6.1.0
+  dio: ^5.0.0
 
 
 dev_dependencies:

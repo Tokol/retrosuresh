@@ -133,7 +133,7 @@ class _SkillInventoryState extends State<SkillInventory> {
       cursor: isSword ? SystemMouseCursors.click : MouseCursor.defer, // Custom cursor for sword
       child: GestureDetector(
         onTap: () {
-          _audioPlayer.setVolume(0.03);
+          _audioPlayer.setVolume(0.06);
           _audioPlayer.play(AssetSource('zelda_item.wav'));
           setState(() => _selectedItem = item["name"]);
         },

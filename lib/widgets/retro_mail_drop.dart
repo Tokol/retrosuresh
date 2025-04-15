@@ -172,7 +172,7 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 2),
+              SizedBox(height: 0),
               GestureDetector(
                 onTap: _flipCard,
                 onHorizontalDragEnd: (details) {
@@ -223,12 +223,125 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
                 ),
               ),
               _buildFilmStripNavigation(),
+
             ],
           ),
         ),
       ),
     );
   }
+
+  // Widget _buildPolaroidFront(Map<String, dynamic> postcard, double width, double height) {
+  //   return Container(
+  //     key: ValueKey('front_${postcard['country']}'),
+  //     width: width,
+  //     height: height,
+  //     decoration: BoxDecoration(
+  //       color: Colors.white,
+  //       border: Border.all(width: 12 * widget.imageScale, color: Colors.white),
+  //       boxShadow: [
+  //         BoxShadow(
+  //           color: Colors.black.withOpacity(0.3),
+  //           blurRadius: 15,
+  //           offset: Offset(5, 5),
+  //         ),
+  //       ],
+  //     ),
+  //     child: Stack(
+  //       fit: StackFit.expand,
+  //       children: [
+  //         CustomPaint(
+  //           painter: _PolaroidTexturePainter(_random),
+  //         ),
+  //         Positioned.fill(
+  //           child: Padding(
+  //             padding: EdgeInsets.all(8.0 * widget.imageScale),
+  //             child: Container(
+  //               decoration: BoxDecoration(
+  //                 borderRadius: BorderRadius.circular(2),
+  //               ),
+  //               child: ClipRRect(
+  //                 borderRadius: BorderRadius.circular(2),
+  //                 child: Image.asset(
+  //                   postcard['image'],
+  //                   fit: BoxFit.contain,
+  //                   // frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+  //                   //   if (frame == null) return _buildLoadingPlaceholder();
+  //                   //   return ColorFiltered(
+  //                   //     colorFilter: ColorFilter.matrix([
+  //                   //       0.8, 0.15, 0.05, 0, 0,
+  //                   //       0.1, 0.7, 0.1, 0, 0,
+  //                   //       0.1, 0.1, 0.7, 0, 0,
+  //                   //       0, 0, 0, 1, 0,
+  //                   //     ]),
+  //                   //     child: child,
+  //                   //   );
+  //                   // },
+  //                   errorBuilder: (ctx, error, stack) => _buildErrorPlaceholder(),
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //         Positioned(
+  //           bottom: 0,
+  //           left: 0,
+  //           right: 0,
+  //           child: Container(
+  //             height: height * 0.15,
+  //             padding: EdgeInsets.symmetric(
+  //               horizontal: 8 * widget.fontScale,
+  //               vertical: 4 * widget.fontScale,
+  //             ),
+  //             color: Colors.white,
+  //             child: Column(
+  //               mainAxisAlignment: MainAxisAlignment.center,
+  //               crossAxisAlignment: CrossAxisAlignment.center, // Changed to center
+  //               children: [
+  //                 Flexible(
+  //                   child: FittedBox(
+  //                     fit: BoxFit.scaleDown,
+  //                     child: Text(
+  //                       postcard['location'],
+  //                       style: GoogleFonts.anton(
+  //                         fontSize: 14 * widget.fontScale,
+  //                         color: Colors.black,
+  //                         letterSpacing: 1.2,
+  //                       ),
+  //                       textAlign: TextAlign.center, // Added center alignment
+  //                       maxLines: 1,
+  //                       overflow: TextOverflow.ellipsis,
+  //                     ),
+  //                   ),
+  //                 ),
+  //                 SizedBox(height: 2),
+  //                 Text(
+  //                   postcard['date'],
+  //                   style: GoogleFonts.robotoMono(
+  //                     fontSize: 10 * widget.fontScale,
+  //                     color: Colors.grey[700],
+  //                   ),
+  //                   textAlign: TextAlign.center, // Added center alignment
+  //                   maxLines: 1,
+  //                   overflow: TextOverflow.ellipsis,
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //         Positioned(
+  //           top: 5,
+  //           left: 5,
+  //           child: CustomPaint(
+  //             painter: _CornerStickerPainter(color: postcard['stampColor']),
+  //             size: Size(30, 30),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
 
   Widget _buildPolaroidFront(Map<String, dynamic> postcard, double width, double height) {
     return Container(
@@ -253,90 +366,127 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
             painter: _PolaroidTexturePainter(_random),
           ),
           Positioned.fill(
-            child: Padding(
-              padding: EdgeInsets.all(8.0 * widget.imageScale),
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(2),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(2),
-                  child: Image.asset(
-                    postcard['image'],
-                    fit: BoxFit.contain,
-                    frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                      if (frame == null) return _buildLoadingPlaceholder();
-                      return ColorFiltered(
-                        colorFilter: ColorFilter.matrix([
-                          0.8, 0.15, 0.05, 0, 0,
-                          0.1, 0.7, 0.1, 0, 0,
-                          0.1, 0.1, 0.7, 0, 0,
-                          0, 0, 0, 1, 0,
-                        ]),
-                        child: child,
-                      );
-                    },
-                    errorBuilder: (ctx, error, stack) => _buildErrorPlaceholder(),
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: height * 0.15,
-              padding: EdgeInsets.symmetric(
-                horizontal: 8 * widget.fontScale,
-                vertical: 4 * widget.fontScale,
-              ),
-              color: Colors.white,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center, // Changed to center
-                children: [
-                  Flexible(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        postcard['location'],
-                        style: GoogleFonts.anton(
-                          fontSize: 14 * widget.fontScale,
-                          color: Colors.black,
-                          letterSpacing: 1.2,
-                        ),
-                        textAlign: TextAlign.center, // Added center alignment
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
+              child: Padding(
+                padding: EdgeInsets.all(8.0 * widget.imageScale),
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2)),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(2),
+                      child: Image.asset(
+                        postcard['image'],
+                        fit: BoxFit.contain,
+                        frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                          if (frame == null) return _buildLoadingPlaceholder();
+                          return ColorFiltered(
+                            colorFilter: ColorFilter.matrix([
+                              0.8, 0.15, 0.05, 0, 0,
+                              0.1, 0.7, 0.1, 0, 0,
+                              0.1, 0.1, 0.7, 0, 0,
+                              0, 0, 0, 1, 0,
+                            ]),
+                            child: child,
+                          );
+                        },
+                        errorBuilder: (ctx, error, stack) => _buildErrorPlaceholder(),
                       ),
                     ),
                   ),
-                  SizedBox(height: 2),
-                  Text(
-                    postcard['date'],
-                    style: GoogleFonts.robotoMono(
-                      fontSize: 10 * widget.fontScale,
-                      color: Colors.grey[700],
-                    ),
-                    textAlign: TextAlign.center, // Added center alignment
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                ),
               ),
-            ),
-          ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: height * 0.15,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 8 * widget.fontScale,
+                    vertical: 4 * widget.fontScale,
+                  ),
+                  color: Colors.white,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            postcard['location'],
+                            style: GoogleFonts.anton(
+                              fontSize: 14 * widget.fontScale,
+                              color: Colors.black,
+                              letterSpacing: 1.2,
+                            ),
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 2),
+                      Text(
+                        postcard['date'],
+                        style: GoogleFonts.robotoMono(
+                          fontSize: 10 * widget.fontScale,
+                          color: Colors.grey[700],
+                        ),
+                        textAlign: TextAlign.center,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 5,
+                left: 5,
+                child: CustomPaint(
+                  painter: _CornerStickerPainter(color: postcard['stampColor']),
+                  size: Size(30, 30),
+                ),
+              ),
+              // Add flip hint indicator
+              if (_showFlipHint)
           Positioned(
-            top: 5,
-            left: 5,
-            child: CustomPaint(
-              painter: _CornerStickerPainter(color: postcard['stampColor']),
-              size: Size(30, 30),
-            ),
+            right: 15,
+            bottom: height * 0.15 + 15, // Position above the bottom label
+            child: _buildFlipHintIndicator(),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildFlipHintIndicator() {
+    return IgnorePointer(
+      child: AnimatedOpacity(
+        opacity: _showFlipHint ? 1.0 : 0.0,
+        duration: Duration(milliseconds: 500),
+        child: Container(
+          padding: EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            color: Colors.black.withOpacity(0.6),
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(Icons.flip, color: Colors.white, size: 16),
+              SizedBox(width: 4),
+              Text(
+                'Flip me!',
+                style: GoogleFonts.roboto(
+                  color: Colors.white,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
