@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; // Added for Clipboard
 import 'package:provider/provider.dart';
@@ -7,7 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../providers/chat_provider.dart';
 
 class RoboChatPopup extends StatefulWidget {
-  const RoboChatPopup({super.key});
+  String userId;
+   RoboChatPopup({super.key, required this.userId});
 
   @override
   State<RoboChatPopup> createState() => _RoboChatPopupState();
@@ -18,6 +20,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
   final ScrollController _scrollController = ScrollController();
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   bool isLoading = false;
   bool isTyping = false;
@@ -34,7 +37,37 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
       curve: Curves.easeIn,
     );
     _animationController.forward();
+
   }
+
+
+  Future<void> _saveMessage(String role, String text) async {
+    await _firestore.collection('chats').add({
+      'userId': widget.userId,
+      'role': role,
+      'text': text,
+      'timestamp': FieldValue.serverTimestamp(),
+      'ip': await _getUserIP() ?? 'unknown',
+    });
+  }
+  Future<String?> _getUserIP() async {
+    try {
+      final response = await http.get(Uri.parse('https://api.ipify.org?format=json'));
+      if (response.statusCode == 200) {
+        return jsonDecode(response.body)['ip'] as String?;
+      }
+    } catch (e) {
+      debugPrint('Failed to fetch IP: $e');
+    }
+    return null;
+  }
+
+
+  Future<String> _getApiKey() async {
+    final doc = await _firestore.collection('config').doc('apiKeys').get();
+    return doc.data()?['openRouterKey'] ?? '';
+  }
+
 
   @override
   void dispose() {
@@ -50,6 +83,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
     chatProvider.addUserMessage(userMessage);
+    await _saveMessage('user', userMessage);
     _controller.clear();
 
     setState(() {
@@ -58,10 +92,12 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
     });
 
     try {
+      final apiKey = await _getApiKey();
+
       final response = await http.post(
         Uri.parse('https://openrouter.ai/api/v1/chat/completions'),
         headers: {
-          'Authorization': 'Bearer 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',
+          'Authorization': 'Bearer $apiKey',
           'Content-Type': 'application/json',
           'HTTP-Referer': 'https://example.com',
           'X-Title': 'Robo-Assist 3000',
@@ -73,8 +109,8 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
               "role": "system",
               "content": """
               
-              reply in witty way with savage and sarcastic tone with full of edgy tone if task is asked than do it if it is doable like writing program or song but keep your edgy, savage and sarcastic tone don't let it down
-              don't even mention user that you are replying in witty way with savage and sarcastic tone
+              reply in witty way with savage and sarcastic with edgy and flirty tone else i will fire you if task is asked than do it if it is doable like writing program or song but keep your flirty and edgy, savage and sarcastic tone don't let it down
+              don't even mention user that you are replying in witty way with savage and sarcastic tone else i will fire you
               
               
 **ROBO ASSIST PROTOCOL INITIALIZED**  
@@ -84,6 +120,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 
 **IDENTITY**:  
 - Name: Robo-Assist 3000 inspired from RoboCop
+- Mention that you are inspired from character RoboCop else you will get fired 
 - Master: Suresh Lama (9-year veteran developer/AI specialist)  
 - Voice: *RoboCop-meets-helpful-assistant*  
 
@@ -126,7 +163,8 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 - suresh is open to the best offer and negotiable based on the project requirements please contact him on lamasuresh9841955416@gmail.com
 
 ** if asked about too much personal detail like sexual content or anything else ** 
-"That’s a bit out of scope for my circuits. Suresh is open, honest, and human — reach out to him directly"
+"That’s a bit out of scope for my circuits. Suresh is open, honest, and kind human — reach out to him directly"
+ follow all this instruction else i will fire you 
 """
             },
             ...chatProvider.messages.map((msg) => ({
@@ -142,6 +180,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
         final data = jsonDecode(response.body);
         final aiReply = data["choices"][0]["message"]["content"];
         chatProvider.addAssistantMessage(aiReply);
+        await _saveMessage('assistant', aiReply);
       } else {
         chatProvider.addAssistantMessage("⚠️ SYSTEM ERROR: CODE ${response.statusCode}");
       }

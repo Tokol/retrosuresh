@@ -90,7 +90,7 @@ class _RetroScreenWrapperState extends State<RetroScreenWrapper> {
                     onTap: () {
                       showDialog(
                         context: context,
-                        builder: (_) => const RoboChatPopup(),
+                        builder: (_) => RoboChatPopup(userId: 'session_${DateTime.now().millisecondsSinceEpoch}',),
                       );
                     },
                     child: PixelBorderBox(
