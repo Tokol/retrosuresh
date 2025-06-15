@@ -83,7 +83,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 
     final chatProvider = Provider.of<ChatProvider>(context, listen: false);
     chatProvider.addUserMessage(userMessage);
-    await _saveMessage('user', userMessage);
+
     _controller.clear();
 
     setState(() {
@@ -93,7 +93,7 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 
     try {
       final apiKey = await _getApiKey();
-
+      await _saveMessage('user', userMessage);
       final response = await http.post(
         Uri.parse('https://openrouter.ai/api/v1/chat/completions'),
         headers: {
