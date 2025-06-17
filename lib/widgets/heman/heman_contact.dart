@@ -107,13 +107,13 @@ class _HeManContactSectionState extends State<HeManContactSection>
           backgroundColor: Colors.red[900],
         ),
       );
-      _playSound('sword_clink.mp3');
+      _playSound('assets/sounds/sword_clink.mp3');
       return;
     }
 
     _sendEmail();
 
-    _playSound('heman_yell.wav');
+    _playSound('assets/sounds/heman_yell.wav');
     _powerUpController.forward();
 
     setState(() {
@@ -163,7 +163,7 @@ ${_projectController.text.trim()}
 
 
   void _resetForm() {
-    _playSound('sword_swing.mp3');
+    _playSound('assets/sounds/sword_swing.mp3');
     setState(() {
       _isSubmitted = false;
       _showSuccess = false;
@@ -203,7 +203,7 @@ ${_projectController.text.trim()}
           contentPadding: const EdgeInsets.all(12),
         ),
         maxLines: maxLines,
-        onTap: () => _playSound('sword_clink.mp3'),
+        onTap: () => _playSound('assets/sounds/sword_swing.mp3'),
       ),
     );
   }
@@ -211,7 +211,7 @@ ${_projectController.text.trim()}
   Widget _buildSocialButton(Map<String, dynamic> social, int index,) {
     return GestureDetector(
       onTap: () async {
-        _playSound('sword_swing.mp3');
+        _playSound('assets/sounds/sword_swing.mp3');
         final url = social['url'];
         if (await canLaunch(url)) {
           await launch(url);

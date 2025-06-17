@@ -101,11 +101,11 @@ class _SpaceInvadersMessageBlasterState
     _errorPlayer = AudioPlayer();
 
     try {
-      await _laserPlayer.setAsset('assets/laser_shoot.wav');
-      await _explosionPlayer.setAsset('assets/explosion.wav');
-      await _jinglePlayer.setAsset('assets/success.wav');
-      await _typingPlayer.setAsset('assets/ckack.m4a');
-      await _errorPlayer.setAsset('assets/error_bleep.flac');
+      await _laserPlayer.setAsset('assets/sounds/laser_shoot.wav');
+      await _explosionPlayer.setAsset('assets/sounds/explosion.wav');
+      await _jinglePlayer.setAsset('assets/sounds/success.wav');
+      await _typingPlayer.setAsset('assets/sounds/ckack.m4a');
+      await _errorPlayer.setAsset('assets/sounds/error_bleep.flac');
     } catch (e) {
       debugPrint('Error loading audio: $e');
     }

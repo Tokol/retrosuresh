@@ -58,7 +58,7 @@ class _RetroServicesState extends State<RetroServices>
 
   void _fireLaser(int index) async {
     setState(() => _isFiring = true);
-    await _audioPlayer.play(AssetSource('laser.wav'));
+    await _audioPlayer.play(AssetSource('assets/sounds/laser.wav'));
     await Future.delayed(const Duration(milliseconds: 300));
     setState(() {
       _selectedIndex = index;

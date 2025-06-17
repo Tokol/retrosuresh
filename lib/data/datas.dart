@@ -278,7 +278,7 @@ final List<Map<String, dynamic>> turtleServices = [
     'color': Colors.blueAccent,
     'quote': 'I slice through mobile app hurdles—native, cross-platform, you name it—like a katana through code!',
     'mastery': 95,
-    'sound': 'attack1.mp3',
+    'sound': 'assets/sounds/attack1.mp3',
     'icon': 'images/leo.gif',
     'service_icon': 'images/mobile_dev.png'
   },
@@ -288,7 +288,7 @@ final List<Map<String, dynamic>> turtleServices = [
     'color': Colors.redAccent,
     'quote': 'Need a sharper tech strategy? I’ll spot the gaps and cut through the chaos like a sai in action!',
     'mastery': 90,
-    'sound': 'attack2.mp3',
+    'sound': 'assets/sounds/attack2.mp3',
     'icon': 'images/raph.gif',
     'service_icon': 'images/it_consultation.png'
   },
@@ -298,7 +298,7 @@ final List<Map<String, dynamic>> turtleServices = [
     'color': Colors.purpleAccent,
     'quote': 'Turn ChatGPT into Jarvis—without Ultron-level bugs.',
     'mastery': 88,
-    'sound': 'piza.mp3',
+    'sound': 'assets/sounds/piza.mp3',
     'icon': 'images/donnie.gif',
     'service_icon': 'images/gpt_wrapper.png'
   },
@@ -308,7 +308,7 @@ final List<Map<String, dynamic>> turtleServices = [
     'color': Colors.orangeAccent,
     'quote': 'Deploy AI agents that won\'t go HAL 9000 on your users, dude!',
     'mastery': 93,
-    'sound': 'cowabunga.mp3',
+    'sound': 'assets/sounds/cowabunga.mp3',
     'icon': 'images/mikey.gif',
     'service_icon': 'images/ai_agent.png'
   },

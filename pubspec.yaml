@@ -1,5 +1,5 @@
 name: suresh_portfilo
-description: "A new Flutter project."
+description: "Suresh Lama Portfolio"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -77,6 +77,33 @@ flutter:
     - images/
     - assets/
     - images/travel/
+    - assets/sounds/attack1.mp3
+    - assets/sounds/attack2.mp3
+    - assets/sounds/blip.wav
+    - assets/sounds/book_page.mp3
+    - assets/sounds/camera_click.mp3
+    - assets/sounds/chiptune_melody.wav
+    - assets/sounds/ckack.m4a
+    - assets/sounds/click.wav
+    - assets/sounds/coin.wav
+    - assets/sounds/cowabunga.mp3
+    - assets/sounds/engine.mp3
+    - assets/sounds/error_bleep.flac
+    - assets/sounds/explosion.wav
+    - assets/sounds/heman_yell.wav
+    - assets/sounds/laser_shoot.wav
+    - assets/sounds/paper_flip.mp3
+    - assets/sounds/piza.mp3
+    - assets/sounds/power_up.wav
+    - assets/sounds/retro_engine.wav
+    - assets/sounds/select.mp3
+    - assets/sounds/shuriken.mp3
+    - assets/sounds/start.wav
+    - assets/sounds/success.wav
+    - assets/sounds/sword_clink.mp3
+    - assets/sounds/sword_swing.mp3
+    - assets/sounds/type_clack.flac
+    - assets/sounds/zelda_item.wav
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

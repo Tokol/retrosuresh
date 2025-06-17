@@ -82,7 +82,7 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
     HapticFeedback.lightImpact();
 
     // Play flip sound at start
-    _playSound('paper_flip.mp3');
+    _playSound('assets/sounds/paper_flip.mp3');
 
     if (_isFront) {
       await _flipController.forward();
@@ -105,7 +105,7 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
 
 
   Future<void> _initAudio() async {
-    await _audioPlayer.setAsset('camera_click.mp3');
+    await _audioPlayer.setAsset('assets/sounds/camera_click.mp3');
   }
 
   Future<void> _playSound(String sound) async {
@@ -120,7 +120,7 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
 
 
   void _navigateCard(int direction) async {
-    await _playSound('camera_click.mp3');
+    await _playSound('assets/sounds/camera_click.mp3');
 
     // Reset flip animation to show front face
     if (!_isFront) {
@@ -739,7 +739,7 @@ class _RetroPostcardState extends State<RetroPostcard>  with SingleTickerProvide
                   return GestureDetector(
                     onTap: () async {
                       if (index != _currentCardIndex) {
-                        await _playSound('camera_click.mp3');
+                        await _playSound('assets/sounds/camera_click.mp3');
 
                         // Reset flip animation to show front face
                         if (!_isFront) {
