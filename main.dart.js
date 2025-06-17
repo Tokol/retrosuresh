@@ -91690,9 +91690,9 @@ case 3:return A.o(null,r)}})
 return A.p($async$lr,r)},
 akD(){var s,r=this,q=null
 if(r.d.a.a.length===0||r.e.a.a.length===0||r.f.a.a.length===0){r.c.aC(t.Pu).f.MV(A.aE6(q,q,q,B.js,q,B.B,q,A.aF("FILL ALL FIELDS, MORTAL!",q,q,q,q,q,A.bA().$1$fontSize(10),q,q),q,B.J4,q,q,q,q,q,q,q,q,q))
-r.lr("sword_clink.mp3")
+r.lr("assets/sounds/sword_clink.mp3")
 return}r.zm()
-r.lr("heman_yell.wav")
+r.lr("assets/sounds/heman_yell.wav")
 s=r.y
 s===$&&A.b()
 s.bm()
@@ -91728,7 +91728,7 @@ case 5:return A.o(null,r)
 case 1:return A.n(p.at(-1),r)}})
 return A.p($async$zm,r)},
 aiG(){var s=this
-s.lr("sword_swing.mp3")
+s.lr("assets/sounds/sword_swing.mp3")
 s.W(new A.atg(s))
 s.Vi()},
 OC(a,b,c,d){var s=null,r=A.ca(a,2),q=A.cX(4),p=A.Z(B.c.a6(127.5),B.h.n()>>>16&255,B.h.n()>>>8&255,B.h.n()&255),o=A.bA().$2$color$fontSize(B.j,12)
@@ -91771,12 +91771,12 @@ s.e.j_(B.dj)
 s.f.j_(B.dj)},
 $S:0}
 A.ate.prototype={
-$0(){return this.a.lr("sword_clink.mp3")},
+$0(){return this.a.lr("assets/sounds/sword_swing.mp3")},
 $S:0}
 A.atf.prototype={
 $0(){var s=0,r=A.q(t.H),q=this,p
 var $async$$0=A.m(function(a,b){if(a===1)return A.n(b,r)
-while(true)switch(s){case 0:q.a.lr("sword_swing.mp3")
+while(true)switch(s){case 0:q.a.lr("assets/sounds/sword_swing.mp3")
 p=q.b.h(0,"url")
 s=4
 return A.j(A.aF9(p),$async$$0)
@@ -92071,7 +92071,7 @@ o=o===B.bR}else o=!0
 if(o){s=1
 break}p.f=!0
 A.aas()
-p.oq("paper_flip.mp3")
+p.oq("assets/sounds/paper_flip.mp3")
 o=p.x
 n=p.d
 s=o?3:5
@@ -92090,7 +92090,7 @@ return A.p($async$qm,r)},
 yJ(){var s=0,r=A.q(t.H),q=this
 var $async$yJ=A.m(function(a,b){if(a===1)return A.n(b,r)
 while(true)switch(s){case 0:s=2
-return A.j(q.w.jJ("camera_click.mp3"),$async$yJ)
+return A.j(q.w.jJ("assets/sounds/camera_click.mp3"),$async$yJ)
 case 2:return A.o(null,r)}})
 return A.p($async$yJ,r)},
 oq(a){return this.ai6(a)},
@@ -92120,7 +92120,7 @@ mQ(a){return this.agg(a)},
 agg(a){var s=0,r=A.q(t.H),q=this,p,o
 var $async$mQ=A.m(function(b,c){if(b===1)return A.n(c,r)
 while(true)switch(s){case 0:s=2
-return A.j(q.oq("camera_click.mp3"),$async$mQ)
+return A.j(q.oq("assets/sounds/camera_click.mp3"),$async$mQ)
 case 2:p=q.x
 o=q.d
 s=!p?3:5
@@ -92271,7 +92271,7 @@ m=q.a
 s=n!==m.y?2:3
 break
 case 2:s=4
-return A.j(m.oq("camera_click.mp3"),$async$$0)
+return A.j(m.oq("assets/sounds/camera_click.mp3"),$async$$0)
 case 4:p=m.x
 o=m.d
 s=!p?5:7
@@ -92990,15 +92990,15 @@ o.cy=A.nf()
 o.db=A.nf()
 q=3
 s=6
-return A.j(o.ch.jJ("assets/laser_shoot.wav"),$async$mO)
+return A.j(o.ch.jJ("assets/sounds/laser_shoot.wav"),$async$mO)
 case 6:s=7
-return A.j(o.CW.jJ("assets/explosion.wav"),$async$mO)
+return A.j(o.CW.jJ("assets/sounds/explosion.wav"),$async$mO)
 case 7:s=8
-return A.j(o.cx.jJ("assets/success.wav"),$async$mO)
+return A.j(o.cx.jJ("assets/sounds/success.wav"),$async$mO)
 case 8:s=9
-return A.j(o.cy.jJ("assets/ckack.m4a"),$async$mO)
+return A.j(o.cy.jJ("assets/sounds/ckack.m4a"),$async$mO)
 case 9:s=10
-return A.j(o.db.jJ("assets/error_bleep.flac"),$async$mO)
+return A.j(o.db.jJ("assets/sounds/error_bleep.flac"),$async$mO)
 case 10:q=1
 s=5
 break
@@ -101212,7 +101212,7 @@ return A.a([A.R(["name","Nabin Mahara","text",'Suresh Lama Sir makes coding an a
 $.aC3=function(){var s=t.N,r=t.z
 return A.a([A.R(["name","Flutter Blitz","icon","images/flutter.png","description","Strikes with cross-platform app precision","use","Built Doc Talk complex chat app for health worker during pandemic @Freelance (2021)","mastery",95,"color",B.fg],s,r),A.R(["name","Java Juggernaut","icon","images/java.png","description","Crushes native Android challenges","use","Shipped 15+ Java-based native Android apps @Eton Technology (2016-2018)","mastery",90,"color",B.bz],s,r),A.R(["name","React Native Ninja","icon","images/react.png","description","Stealthily bridges iOS and Android with masterful precision","use","Forged a high-end, buttery-smooth UI/UX for a demanding Japanese client @IGC Technology (2018-2019)","mastery",85,"color",B.Z],s,r),A.R(["name","Dart Dynamo","icon","images/dart.png","description","Bullseyes async puzzles like a Gerudo archer","use","Cleared DSA labyrinths & Isolate shrines since Flutter's first release by Google (2017)","mastery",92,"color",B.kF],s,r),A.R(["name","Firebase Forge","icon","images/firebase.png","description","Fires rapid Flutter-powered solutions with blazing efficiency","use","Empowered 10+ apps with real-time Firebase magic (2019-Present)","mastery",88,"color",B.w],s,r),A.R(["name","Git Guru","icon","images/git.png","description","Masters version control like a pro","use","Rescued 10,000+ commits from the abyss (2016-Present)","mastery",90,"color",B.ah],s,r),A.R(["name","API Alchemist","icon","images/api.png","description","Turns REST, SOAP & sockets into digital gold","use","Wired up countless number of APIs across industries (2016\u2013Present) \u2022 From legacy systems to real-time magic","mastery",87,"color",B.vw],s,r),A.R(["name","SQL Sorcerer","icon","images/sql.png","description","Casts structured data spells","use","Optimized School Management System @Eton Technology (2017)","mastery",85,"color",B.TI],s,r),A.R(["name","Debug Demolisher","icon","images/bug.png","description","Smashes bugs with ruthless efficiency","use","Fixed Nepbay app performance @Nepbay (2019)","mastery",89,"color",B.aU],s,r),A.R(["name","Solidity Striker","icon","images/solidity.png","description","Kicks blockchain into high gear","use","Explored blockchain for apps @Freelance (2022)","mastery",75,"color",B.vv],s,r),A.R(["name","IPFS Pathfinder","icon","images/ipfs.png","description","Navigates decentralized file frontiers","use","Integrated IPFS in projects @Freelance (2022)","mastery",80,"color",B.vx],s,r),A.R(["name","ClientSync","icon","images/handshake.png","description","Translates ideas into real solutions with automated precision","use","From coffee-shop consultations to polished deployments for diverse clients @Freelance (2016\u2013Present)","mastery",86,"color",B.cz],s,r),A.R(["name","Quest Leader","icon","images/teamwork.png","description","Assembles and rallies dev parties for epic projects","use","Led 5+ cross-functional teams to deliver complex apps on deadline","mastery",88,"color",B.cy],s,r),A.R(["name","Lore Translator","icon","images/communication.png","description","Converts tech jargon into stakeholder-friendly tales","use","Bridged 50+ client meetings from confusion to clarity (2016\u2013Present)","mastery",90,"color",B.TL],s,r),A.R(["name","Code Sage","icon","images/mentor.png","description","Levels up junior developers with ancient wisdom","use","Mentored 10+ devs @Freelance & communities","mastery",85,"color",B.TK],s,r),A.R(["name","Scrum Ninja","icon","images/agile.png","description","Sprints through deadlines without breaking stealth","use","Shipped 20+ apps using Agile rituals (2017\u2013Present)","mastery",87,"color",B.hQ],s,r),A.R(["name","Puzzle Warden","icon","images/problem-solving.png","description","Unlocks impossible bugs with lateral thinking","use","Solved 100+ critical production issues across projects","mastery",93,"color",B.TG],s,r),A.R(["name","Tech Bard","icon","images/speaking.png","description","Turns complex concepts into engaging campfire stories","use","Spoke at 5+ tech meetups about latest tech trends","mastery",80,"color",B.vu],s,r)],t.H7)}()
 $.aC6=function(){var s=t.N,r=t.z
-return A.a([A.R(["name","MOBILE APP DEVELOPMENT","turtle","Leonardo","color",B.kD,"quote","I slice through mobile app hurdles\u2014native, cross-platform, you name it\u2014like a katana through code!","mastery",95,"sound","attack1.mp3","icon","images/leo.gif","service_icon","images/mobile_dev.png"],s,r),A.R(["name","IT CONSULTING","turtle","Raphael","color",B.hQ,"quote","Need a sharper tech strategy? I\u2019ll spot the gaps and cut through the chaos like a sai in action!","mastery",90,"sound","attack2.mp3","icon","images/raph.gif","service_icon","images/it_consultation.png"],s,r),A.R(["name","GPT WRAPPER APP","turtle","Donatello","color",B.vv,"quote","Turn ChatGPT into Jarvis\u2014without Ultron-level bugs.","mastery",88,"sound","piza.mp3","icon","images/donnie.gif","service_icon","images/gpt_wrapper.png"],s,r),A.R(["name","AI AGENT INTEGRATION","turtle","Michelangelo","color",B.vu,"quote","Deploy AI agents that won't go HAL 9000 on your users, dude!","mastery",93,"sound","cowabunga.mp3","icon","images/mikey.gif","service_icon","images/ai_agent.png"],s,r)],t.H7)}()
+return A.a([A.R(["name","MOBILE APP DEVELOPMENT","turtle","Leonardo","color",B.kD,"quote","I slice through mobile app hurdles\u2014native, cross-platform, you name it\u2014like a katana through code!","mastery",95,"sound","assets/sounds/attack1.mp3","icon","images/leo.gif","service_icon","images/mobile_dev.png"],s,r),A.R(["name","IT CONSULTING","turtle","Raphael","color",B.hQ,"quote","Need a sharper tech strategy? I\u2019ll spot the gaps and cut through the chaos like a sai in action!","mastery",90,"sound","assets/sounds/attack2.mp3","icon","images/raph.gif","service_icon","images/it_consultation.png"],s,r),A.R(["name","GPT WRAPPER APP","turtle","Donatello","color",B.vv,"quote","Turn ChatGPT into Jarvis\u2014without Ultron-level bugs.","mastery",88,"sound","assets/sounds/piza.mp3","icon","images/donnie.gif","service_icon","images/gpt_wrapper.png"],s,r),A.R(["name","AI AGENT INTEGRATION","turtle","Michelangelo","color",B.vu,"quote","Deploy AI agents that won't go HAL 9000 on your users, dude!","mastery",93,"sound","assets/sounds/cowabunga.mp3","icon","images/mikey.gif","service_icon","images/ai_agent.png"],s,r)],t.H7)}()
 $.aO0=function(){var s="LAGOON ROLLER COASTER",r=t.N,q=t.z
 return A.a([A.R(["country","Egypt","code","EG","image","images/pyramid_photo.jpg","message","Stood in awe before the Pyramids!","story","As I stood before the Pyramids, time felt thick in the air\u2014like it was watching me. These stones have outlasted empires, lovers, and sunsets. I couldn\u2019t help but wonder: what will remain of us in 5,000 years? Maybe just a memory in the wind, or maybe nothing at all\u2014and that\u2019s oddly comforting.","location","GIZA PLATEAU","date","FEB 5, 2022","stampColor",B.bz],r,q),A.R(["country","Nepal","code","NP","image","images/mountain_peak_photo.jpg","message","Reached the peaks of the Himalayas!","story","Trekking to Annapurna felt like shedding layers\u2014not just of jackets, but of ego. Each step reminded me how small I am, yet how full that smallness can feel. The mountains whispered: *I was here before you, and I\u2019ll be here after.* And somehow, that felt peaceful.","location","ANNAPURNA RANGE","date","NOV 5, 2024","stampColor",B.ah],r,q),A.R(["country","Vietnam","code","VN","image","images/travel/lotus temple.jpg","message","Stood still in the heart of Hanoi.","story","The One Pillar Pagoda rose from a lotus pond. Built by Emperor L\xfd Th\xe1i T\xf4ng after a divine vision, it became a guardian of hope and rebirth. War tried to erase it. Time tried to forget it. Yet like the lotus, it blooms again. In its shadow, I saw the resilience of faith, the echo of dreams, and the stillness this rushing world forgets.","location","Lotus Temple","date","JUN 10, 2023","stampColor",B.cy],r,q),A.R(["country","Nepal","code","NP","image","images/travel/shaktikor.jpg","message","Shaktikhor Waterfall","story","Shaktikhor in Chitwan felt like a short hike, but it opened a new chapter for me\u2014my first on the humid trails of the Terai. It wasn\u2019t just the heat I walked through, but the stories of the Chepang community, carved into the hills and whispers of the forest. Sometimes, the smallest trails take you farthest\u2014from routine into discovery.","location","SHAKTIKHOR WATERFALL","date","JUL 10, 2021","stampColor",B.ah],r,q),A.R(["country","Egypt","code","EG","image","images/travel/library_eg.jpg","message","Bibliotheca Alexandrina","story","Standing before the Bibliotheca Alexandrina, I felt the weight of lost knowledge and the hope of rediscovery. Once the heart of ancient wisdom, now reborn by the sea\u2014it reminded me that even what\u2019s lost can return in new form. Like journeys, like parts of ourselves.","location","BIBLIOTHECA ALEXANDRINA","date","FEB 8, 2022","stampColor",B.bz],r,q),A.R(["country","Thailand","code","TH","image","images/travel/thailand.jpg","message","Wat Traimit","story","Inside Wat Traimit, I took a quiet selfie with a monk. No exchange, no performance\u2014just two paths crossing in stillness. Behind us, the Golden Buddha reminded me how much strength can rest in silence, and how some moments speak without saying a word.","location","WAT TRAIMIT","date","FEB 11, 2018","stampColor",B.kD],r,q),A.R(["country","Nepal","code","NP","image","images/travel/ghandruk.jpg","message","GHANDRUK HIKE","story","The Ghandruk hike offered stunning mountain views at every turn, but it was the quiet strength of the Gurung village that grounded me. A perfect mix of effort and ease\u2014where culture met altitude, and every step felt like a reward.","location","GHANDRUK HIKE","date","NOV 3, 2024","stampColor",B.ah],r,q),A.R(["country","Vietnam","code","VN","image","images/travel/vietnam.jpg","message","Hanoi Rickshaw Adventure","story","Riding a rickshaw through Hanoi was chaos wrapped in charm. The streets buzzed, yet felt clean and calm in their own rhythm. My rickshaw puller, all smiles, moved like he was part of the flow\u2014not rushing, just present. Sitting there, I didn\u2019t just pass through the city\u2014I really saw it.","location","HANOI RICKSHAW ADVENTURE","date","JUN 14, 2023","stampColor",B.cy],r,q),A.R(["country","Malaysia","code","MY","image","images/travel/malyasia.jpg","message",s,"story","In Malaysia, I was young, nervous, and curious\u2014my first roller coaster ride. The irony? It was one of the oldest, built in the 1920s. It had carried many like me, across time. Funny how the oldest rides can spark the newest memories.","location",s,"date","JAN 15, 2017","stampColor",B.w],r,q),A.R(["country","Nepal","code","NP","image","images/travel/snack.jpg","message","Shivapuri ","story","In the heart of Shivapuri National Park, I took a break under the summer sun, enjoying a protein bar. Surrounded by the dense jungle, the peaceful rhythm of the forest reminded me of the strength in quiet persistence. With each step, the calm of the land made me want to keep walking further.","location","SHIVAPURI NATIONAL PARK","date","OCT 5, 2021","stampColor",B.ah],r,q),A.R(["country","Vietnam","code","VN","image","images/travel/temple of literature.png","message","Literature Temple","story","With my soulmate-my best friend beside me, I stood at the Temple of Literature in Vietnam\u2014built during a time when Confucian ideals from ancient China shaped the civilization of this region. In that quiet courtyard, we felt something deeper than history\u2014a shared respect for wisdom, tradition, and the silent bond between old teachings and new journeys.","location","TEMPLE OF LITERATURE","date","JUN 16, 2023","stampColor",B.cy],r,q),A.R(["country","Singapore","code","SG","image","images/travel/singapore.jpg","message","Singapore waiting  ","story","Outside that hotel elevator in Singapore, I looked fresh and ready\u2014but behind the excitement was a quiet nervousness. I was younger, still finding my voice, yet curious enough to step out into the unknown. Looking back, it wasn\u2019t just a city I explored, it was a version of myself becoming braver.","location","Singapore: The Journey\u2019s Start","date","MAR 5, 2016","stampColor",B.kF],r,q),A.R(["country","Nepal","code","NP","image","images/travel/bye chitwan.jpg","message","Chitwan ","story","Leaving Chitwan, I held a \u201cChattri\u201d hat, crafted by Tharu farmers for long days in the sun. What once shielded them now marked my quiet goodbye. Some goodbyes aren\u2019t loud\u2014they stay with you, gently, like a piece of the place that never truly leaves.","location","GOODBYE CHITWAN","date","OCT 5, 2021","stampColor",B.ah],r,q),A.R(["country","Egypt","code","EG","image","images/travel/nile.png","message","Whispers of the Nile","story","On a quiet Nile cruise, beneath soft lights and swirling music, I sat\u2014shy, still. The river moved like memory, like myth. It once fed kings and birthed gods, now it carries laughter, lights, and me. Strange how time slips\u2014how a river that made history barely notices you passing.","location","DINNER CRUISE ON NILE RIVER","date","FEB 15, 2022","stampColor",B.bz],r,q),A.R(["country","Vietnam","code","VN","image","images/travel/halongcruz.png","message","Halong Bay by Sea","story","I travelled the sea aboard a cruise hotel, drifting through Halong Bay\u2014where limestone cliffs rose like myths and coastal life moved quietly at the edge of water. From sunrise to starlight, I watched the day breathe in and out. Somewhere between the waves and stillness, I felt the world slow down\u2014just enough to notice it.","location","HALONG BAY \u2013 CRUISE HOTEL","date","JUN 20, 2023","stampColor",B.kF],r,q)],t.H7)}()
 $.aVc=A.C(t.S,A.a4("b55"))
