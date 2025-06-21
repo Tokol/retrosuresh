@@ -92609,7 +92609,7 @@ j=A.a([A.R(["role","system","content",'              \n              reply in wi
 c=l.a
 J.aRC(j,new A.a9(c,new A.awP(),A.a0(c).i("a9<1,an<u,u?>>")))
 s=9
-return A.j(A.b3s(a,B.ca.Xx(A.R(["model","openai/gpt-3.5-turbo","messages",j],d,t.K),null),e),$async$lj)
+return A.j(A.b3s(a,B.ca.Xx(A.R(["model","meta-llama/llama-3-8b-instruct","messages",j],d,t.K),null),e),$async$lj)
 case 9:i=a3
 s=i.b===200?10:12
 break
