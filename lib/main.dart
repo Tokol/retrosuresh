@@ -99,8 +99,8 @@ class _SplashControllerState extends State<SplashController> {
 
       // Calculate remaining time to reach minimum 500ms
       final elapsed = DateTime.now().difference(startTime);
-      if (elapsed < const Duration(milliseconds: 500)) {
-        await Future.delayed(const Duration(milliseconds: 500) - elapsed);
+      if (elapsed < const Duration(seconds: 3)) {
+        await Future.delayed(const Duration(seconds: 3) - elapsed);
       }
 
       if (mounted) setState(() => _isLoading = false);

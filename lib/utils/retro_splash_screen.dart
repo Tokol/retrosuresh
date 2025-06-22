@@ -10,26 +10,58 @@ class RetroLoadingScreen extends StatefulWidget {
 
 class _RetroLoadingScreenState extends State<RetroLoadingScreen>
     with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  double _progress = 0.0;
+  late final AnimationController _controller;
+  late final Animation<double> _progressAnimation;
   final double textScale = 1.2;
-  //late Future<void> _imagePrecacheFuture;
+  bool _assetsLoaded = false;
 
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
-    )..addListener(() {
-      setState(() => _progress = _controller.value);
-    });
+    );
+
+    _progressAnimation = CurvedAnimation(
+      parent: _controller,
+      curve: Curves.easeInOut,
+    );
+
+    // Start animation immediately
     _controller.forward();
   }
 
-  Widget _buildPixelLoadingBar() {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Load assets here when context is safe to use
+    if (!_assetsLoaded) {
+      _loadAssets();
+    }
+  }
+
+  Future<void> _loadAssets() async {
+    try {
+      await precacheImage(
+        const AssetImage("images/splash_bg.jpg"),
+        context,
+      );
+      if (mounted) {
+        setState(() => _assetsLoaded = true);
+      }
+    } catch (e) {
+      debugPrint('Error precaching image: $e');
+      if (mounted) {
+        setState(() => _assetsLoaded = true); // Continue even if image fails
+      }
+    }
+  }
+
+  Widget _buildPixelLoadingBar(double progress) {
     const int totalSegments = 12;
-    int filledSegments = (_progress * totalSegments).floor();
+    final int filledSegments = (progress * totalSegments).floor();
 
     return Container(
       height: 28,
@@ -43,8 +75,8 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
       ),
       child: Row(
         children: List.generate(totalSegments, (index) {
-          bool isFilled = index < filledSegments;
-          bool glitchEffect = isFilled && (DateTime.now().millisecond % 150 < 15);
+          final isFilled = index < filledSegments;
+          final glitchEffect = isFilled && ((_controller.value * 20 % 1) > 0.85);
 
           return Expanded(
             child: Container(
@@ -69,65 +101,71 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
     return Scaffold(
       body: Stack(
         children: [
-          // Background Image
-          Positioned.fill(
-            child: Image.asset(
-              "images/splash_bg.jpg",
-              fit: BoxFit.cover,
-              alignment: Alignment.center,
+          // Fallback background if image isn't loaded yet
+          Container(color: Colors.black),
+
+          // Background Image (only shown when assets are loaded)
+          if (_assetsLoaded)
+            Positioned.fill(
+              child: Image.asset(
+                "images/splash_bg.jpg",
+                fit: BoxFit.cover,
+                alignment: Alignment.center,
+                errorBuilder: (context, error, stackTrace) =>
+                    Container(color: Colors.black),
+              ),
             ),
-          ),
 
           // Dark overlay
           Container(color: Colors.black.withOpacity(0.6)),
 
-          // Loading Content - Positioned lower
+          // Loading Content
           Positioned(
-            bottom: screenHeight * 0.08, // Adjust this value to move up/down
+            bottom: screenHeight * 0.08,
             left: 0,
             right: 0,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // LOADING text
-                Text(
-                  "LOADING...",
-                  style: GoogleFonts.pressStart2p(
-                    fontSize: 14 * textScale,
-                    color: Colors.yellow,
-                    shadows: [
-                      Shadow(
-                        color: Colors.red.withOpacity(0.7),
-                        blurRadius: 10,
-                        offset: Offset.zero,
+            child: AnimatedBuilder(
+              animation: _progressAnimation,
+              builder: (context, _) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "LOADING...",
+                      style: GoogleFonts.pressStart2p(
+                        fontSize: 14 * textScale,
+                        color: Colors.yellow,
+                        shadows: [
+                          Shadow(
+                            color: Colors.red.withOpacity(0.7),
+                            blurRadius: 10,
+                            offset: Offset.zero,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                const SizedBox(height: 24),
-
-                // 8-bit loading bar
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                  child: _buildPixelLoadingBar(),
-                ),
-                const SizedBox(height: 16),
-
-                // Percentage counter
-                Text(
-                  "${(_progress * 100).toStringAsFixed(0)}%",
-                  style: GoogleFonts.pressStart2p(
-                    fontSize: 10 * textScale,
-                    color: Colors.yellow,
-                    shadows: [
-                      Shadow(
-                        color: Colors.red.withOpacity(0.5),
-                        blurRadius: 5,
+                    ),
+                    const SizedBox(height: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                      child: _buildPixelLoadingBar(_progressAnimation.value),
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      "${(_progressAnimation.value * 100).toStringAsFixed(0)}%",
+                      style: GoogleFonts.pressStart2p(
+                        fontSize: 10 * textScale,
+                        color: Colors.yellow,
+                        shadows: [
+                          Shadow(
+                            color: Colors.red.withOpacity(0.5),
+                            blurRadius: 5,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-              ],
+                    ),
+                  ],
+                );
+              },
             ),
           ),
 
