@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
+
 class ChatProvider with ChangeNotifier {
+
+
+  final String ip;
+  final Map<String, dynamic>? device;
+  ChatProvider({required this.ip, required this.device});
+
   final List<Map<String, String>> _messages = [];
 
   List<Map<String, String>> get messages => _messages;

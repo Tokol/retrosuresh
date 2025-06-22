@@ -42,24 +42,16 @@ class _RoboChatPopupState extends State<RoboChatPopup> with SingleTickerProvider
 
 
   Future<void> _saveMessage(String role, String text) async {
+    final chatProvider = Provider.of<ChatProvider>(context, listen: false); // ✅ Add this line
+
     await _firestore.collection('chats').add({
       'userId': widget.userId,
       'role': role,
       'text': text,
       'timestamp': FieldValue.serverTimestamp(),
-      'ip': await _getUserIP() ?? 'unknown',
+      'ip': chatProvider.ip,
+      'device': chatProvider.device,
     });
-  }
-  Future<String?> _getUserIP() async {
-    try {
-      final response = await http.get(Uri.parse('https://api.ipify.org?format=json'));
-      if (response.statusCode == 200) {
-        return jsonDecode(response.body)['ip'] as String?;
-      }
-    } catch (e) {
-      debugPrint('Failed to fetch IP: $e');
-    }
-    return null;
   }
 
 
