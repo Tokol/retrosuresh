@@ -13,6 +13,7 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
   late AnimationController _controller;
   double _progress = 0.0;
   final double textScale = 1.2;
+  //late Future<void> _imagePrecacheFuture;
 
   @override
   void initState() {

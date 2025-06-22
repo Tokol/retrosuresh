@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ChatProvider with ChangeNotifier {
 
 
-  final String ip;
+  final String? ip;
   final Map<String, dynamic>? device;
   ChatProvider({required this.ip, required this.device});
 
