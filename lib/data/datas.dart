@@ -73,6 +73,7 @@ final List<Map<String, String>> collegeTestimonials = [
 
 
 final List<Map<String, dynamic>> skillInventory = [
+
   {
     "name": "Flutter Blitz",
     "icon": "images/flutter.png",
@@ -81,6 +82,29 @@ final List<Map<String, dynamic>> skillInventory = [
     "mastery": 95,
     "color": Colors.blue,
   },
+
+
+  {
+    "name": "FastAPI Falcon",
+    "icon": "images/fastapi.png",
+    "description": "Soars through backend development with RESTful speed",
+    "use": "Engineered high-performance APIs with Pythonic elegance (2024)",
+    "mastery": 85,
+    "color": Colors.deepPurpleAccent,
+  },
+
+
+  {
+    "name": "LangChain Sage",
+    "icon": "images/lagchain.png",
+    "description": "Weaves AI spells with LLM orchestration mastery",
+    "use": "Crafted intelligent agents and RAG systems (2024)",
+    "mastery": 82,
+    "color": Colors.lightGreen,
+  },
+
+
+
   {
     "name": "Java Juggernaut",
     "icon": "images/java.png",
@@ -89,6 +113,10 @@ final List<Map<String, dynamic>> skillInventory = [
     "mastery": 90,
     "color": Colors.orange,
   },
+
+
+
+
   {
     "name": "React Native Ninja",
     "icon": "images/react.png",
@@ -199,23 +227,8 @@ final List<Map<String, dynamic>> skillInventory = [
     "color": Colors.deepPurple,
   },
 
-  {
-    "name": "Scrum Ninja",
-    "icon": "images/agile.png",
-    "description": "Sprints through deadlines without breaking stealth",
-    "use": "Shipped 20+ apps using Agile rituals (2017–Present)",
-    "mastery": 87,
-    "color": Colors.redAccent,
-  },
 
-  {
-    "name": "Puzzle Warden",
-    "icon": "images/problem-solving.png",
-    "description": "Unlocks impossible bugs with lateral thinking",
-    "use": "Solved 100+ critical production issues across projects",
-    "mastery": 93,
-    "color": Colors.tealAccent,
-  },
+
 
   {
     "name": "Tech Bard",
@@ -231,45 +244,6 @@ final List<Map<String, dynamic>> skillInventory = [
 
 ];
 
-
-// final List<Map<String, dynamic>> spaceServices = [
-//   {
-//     "name": "MOBILE APP DEVELOPMENT",
-//     "icon": "assets/battleship.png",
-//     "target": "assets/alien.png",
-//     "color": Colors.blueAccent,
-//     "quote": "I slice through mobile app hurdles—native, cross-platform, you name it—like a katana through code!",
-//     "mastery": 95,
-//     "sound": "explosion.wav",
-//   },
-//   {
-//     "name": "IT CONSULTING",
-//     "icon": "images/battleship.png",
-//     "target": "assets/alien.png",
-//     "color": Colors.yellowAccent,
-//     "quote": "Your tech stack’s Death Star? I know its exhaust port weaknesses.",
-//     "mastery": 90,
-//     "sound": "explosion.wav",
-//   },
-//   {
-//     "name": "GPT WRAPPER APP",
-//     "icon": "images/battleship.png",
-//     "target": "images/alien.png",
-//     "color": Colors.purpleAccent,
-//     "quote": "Turn ChatGPT into Jarvis—without Ultron-level bugs.",
-//     "mastery": 88,
-//     "sound": "explosion.wav",
-//   },
-//   {
-//     "name": "AI AGENT INTEGRATION",
-//     "icon": "images/battleship.png",
-//     "target": "assets/alien.png",
-//     "color": Colors.greenAccent,
-//     "quote": "Deploy AI agents that won’t go HAL 9000 on your users.",
-//     "mastery": 93,
-//     "sound": "explosion.wav",
-//   },
-// ];
 
 final List<Map<String, dynamic>> turtleServices = [
   {

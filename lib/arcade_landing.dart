@@ -29,7 +29,7 @@ class _ArcadeLandingState extends State<ArcadeLanding> {
     await _audioPlayer.play(AssetSource('success.wav'));
     setState(() => _selectedPlayer = player);
 
-    Future.delayed(const Duration(milliseconds: 300), () {
+    Future.delayed(const Duration(milliseconds: 30), () {
       // Check if the widget is still mounted before navigating
       if (mounted) {
         if (player == 'Lecturer') {
