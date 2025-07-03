@@ -10,70 +10,43 @@ import 'firebase/firebase_service.dart';
 import 'providers/chat_provider.dart';
 import 'package:http/http.dart' as http;
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+
+  // Initialize providers first
+  final providers = await _initializeProviders();
+
+  // Show splash screen with providers
   runApp(
-    MaterialApp(
-      home: _InitializationWrapper(),
-      debugShowCheckedModeBanner: false,
+    MultiProvider(
+      providers: providers,
+      child: const MaterialApp(
+        home: SplashController(),
+        debugShowCheckedModeBanner: false,
+      ),
     ),
   );
 }
 
-class _InitializationWrapper extends StatefulWidget {
-  @override
-  State<_InitializationWrapper> createState() => _InitializationWrapperState();
-}
+Future<List<SingleChildWidget>> _initializeProviders() async {
+  String? ip;
+  Map<String, dynamic>? userAgent;
 
-class _InitializationWrapperState extends State<_InitializationWrapper> {
-  late final Future<List<SingleChildWidget>> _providersFuture;
-  bool _providersReady = false;
-
-  @override
-  void initState() {
-    super.initState();
-    _providersFuture = _initializeProviders();
+  try {
+    ip = await _getUserIP();
+    userAgent = await _getUserAgent();
+  } catch (e) {
+    debugPrint('Error initializing provider data: $e');
+    ip = 'unknown';
+    userAgent = {'error': e.toString()};
   }
 
-  Future<List<SingleChildWidget>> _initializeProviders() async {
-    String? ip;
-    Map<String, dynamic>? userAgent;
-
-    try {
-      ip = await _getUserIP();
-      userAgent = await _getUserAgent();
-    } catch (e) {
-      debugPrint('Error initializing provider data: $e');
-      ip = 'unknown';
-      userAgent = {'error': e.toString()};
-    }
-
-    return [
-      ChangeNotifierProvider(
-        create: (_) => ChatProvider(ip: ip, device: userAgent),
-      ),
-    ];
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<SingleChildWidget>>(
-      future: _providersFuture,
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return MultiProvider(
-            providers: snapshot.data!,
-            child: const SplashController(),
-          );
-        }
-        return const Material(
-          color: Colors.black,
-          child: Center(child: CircularProgressIndicator(color: Colors.yellow)),
-        );
-      },
-    );
-  }
+  return [
+    ChangeNotifierProvider(
+      create: (_) => ChatProvider(ip: ip, device: userAgent),
+    ),
+  ];
 }
 
 Future<String?> _getUserIP() async {
@@ -100,20 +73,48 @@ Future<Map<String, dynamic>?> _getUserAgent() async {
   return {'platform': 'non-web'};
 }
 
-class SplashController extends StatelessWidget {
+class SplashController extends StatefulWidget {
   const SplashController({super.key});
 
   @override
+  State<SplashController> createState() => _SplashControllerState();
+}
+
+class _SplashControllerState extends State<SplashController> {
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _initializeApp();
+  }
+
+  Future<void> _initializeApp() async {
+    final startTime = DateTime.now();
+
+    try {
+      await FirebaseService.initialize();
+
+
+      // Calculate remaining time to reach minimum 500ms
+      final elapsed = DateTime.now().difference(startTime);
+      if (elapsed < const Duration(seconds: 3)) {
+        await Future.delayed(const Duration(seconds: 3) - elapsed);
+      }
+
+      if (mounted) setState(() => _isLoading = false);
+    } catch (e) {
+      debugPrint('Initialization error: $e');
+      if (mounted) setState(() => _isLoading = false);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return FutureBuilder<void>(
-      future: FirebaseService.initialize(),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return const MyApp();
-        }
-        return const RetroLoadingScreen();
-      },
-    );
+    return _isLoading
+        ? const RetroLoadingScreen()
+        : const MyApp();
   }
 }
 
@@ -123,7 +124,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Suresh’s Retro Arcade',
+      title: 'Suresh’s Retro Arcade',
     theme: ThemeData.dark(),
     debugShowCheckedModeBanner: false,
     home: const ArcadeLanding(),

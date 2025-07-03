@@ -18,19 +18,25 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
   @override
   void initState() {
     super.initState();
+
     _controller = AnimationController(
       duration: const Duration(seconds: 3),
       vsync: this,
-    )..forward();
+    );
+
     _progressAnimation = CurvedAnimation(
       parent: _controller,
       curve: Curves.easeInOut,
     );
+
+    // Start animation immediately
+    _controller.forward();
   }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    // Load assets here when context is safe to use
     if (!_assetsLoaded) {
       _loadAssets();
     }
@@ -48,7 +54,7 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
     } catch (e) {
       debugPrint('Error precaching image: $e');
       if (mounted) {
-        setState(() => _assetsLoaded = true);
+        setState(() => _assetsLoaded = true); // Continue even if image fails
       }
     }
   }
@@ -95,16 +101,18 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
     return Scaffold(
       body: Stack(
         children: [
-          // Immediate fallback background
+          // Fallback background if image isn't loaded yet
           Container(color: Colors.black),
 
-          // Background Image (only when loaded)
+          // Background Image (only shown when assets are loaded)
           if (_assetsLoaded)
             Positioned.fill(
               child: Image.asset(
                 "images/splash_bg.jpg",
                 fit: BoxFit.cover,
-                errorBuilder: (_, __, ___) => Container(color: Colors.black),
+                alignment: Alignment.center,
+                errorBuilder: (context, error, stackTrace) =>
+                    Container(color: Colors.black),
               ),
             ),
 
@@ -131,6 +139,7 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
                           Shadow(
                             color: Colors.red.withOpacity(0.7),
                             blurRadius: 10,
+                            offset: Offset.zero,
                           ),
                         ],
                       ),
@@ -160,7 +169,7 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
             ),
           ),
 
-          // CRT scanlines effect
+          // CRT scanlines
           IgnorePointer(
             child: Container(
               decoration: BoxDecoration(
