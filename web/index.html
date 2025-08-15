@@ -36,6 +36,17 @@
 
 </head>
 <body>
+<script>
+  (function () {
+    var redirect = sessionStorage.getItem('flutter_spa_path');
+    if (redirect) {
+      sessionStorage.removeItem('flutter_spa_path');
+      // Put the original deep link back in the address bar
+      history.replaceState(null, '', redirect);
+    }
+  })();
+</script>
+
 <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

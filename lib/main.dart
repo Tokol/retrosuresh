@@ -7,23 +7,49 @@ import 'package:suresh_portfilo/utils/device_info.dart';
 import 'package:suresh_portfilo/utils/retro_splash_screen.dart';
 import 'arcade_landing.dart';
 import 'firebase/firebase_service.dart';
+import 'notfound404/notfound.dart';
 import 'providers/chat_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:flutter_web_plugins/url_strategy.dart';
+
+// NEW: import your 404 page
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // pretty URLs
+  usePathUrlStrategy();
 
   // Initialize providers first
   final providers = await _initializeProviders();
 
-  // Show splash screen with providers
+  // Route on the OUTER MaterialApp
   runApp(
     MultiProvider(
       providers: providers,
-      child: const MaterialApp(
-        home: SplashController(),
+      child: MaterialApp(
+        title: 'Suresh’s Retro Arcade',
+        theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,
+
+        // Known routes
+        onGenerateRoute: (settings) {
+          switch (settings.name) {
+            case '/':
+            case null:
+              return MaterialPageRoute(builder: (_) => const SplashController());
+          // Add more named pages later if you have them, e.g.:
+          // case '/arcade': return MaterialPageRoute(builder: (_) => const MyApp());
+          }
+          return null; // not handled -> onUnknownRoute
+        },
+
+        // Unknown path -> your Flutter 404
+        onUnknownRoute: (settings) => MaterialPageRoute(
+          builder: (_) => NotFoundPage(
+            requested: settings.name ?? Uri.base.path,
+          ),
+        ),
       ),
     ),
   );
@@ -86,23 +112,18 @@ class _SplashControllerState extends State<SplashController> {
   @override
   void initState() {
     super.initState();
-
     _initializeApp();
   }
 
   Future<void> _initializeApp() async {
     final startTime = DateTime.now();
-
     try {
       await FirebaseService.initialize();
 
-
-      // Calculate remaining time to reach minimum 500ms
       final elapsed = DateTime.now().difference(startTime);
       if (elapsed < const Duration(seconds: 3)) {
         await Future.delayed(const Duration(seconds: 3) - elapsed);
       }
-
       if (mounted) setState(() => _isLoading = false);
     } catch (e) {
       debugPrint('Initialization error: $e');
@@ -112,22 +133,17 @@ class _SplashControllerState extends State<SplashController> {
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading
-        ? const RetroLoadingScreen()
-        : const MyApp();
+    return _isLoading ? const RetroLoadingScreen() : const MyApp();
   }
 }
 
+// IMPORTANT: no MaterialApp here anymore.
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Suresh’s Retro Arcade',
-    theme: ThemeData.dark(),
-    debugShowCheckedModeBanner: false,
-    home: const ArcadeLanding(),
-    );
+    return const ArcadeLanding();
+   // return const NotFoundPage(requested: "tet");
   }
 }
