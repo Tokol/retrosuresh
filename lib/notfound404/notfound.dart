@@ -633,7 +633,7 @@ class _DustWidgetState extends State<_DustWidget>
           child: Opacity(
             opacity: a.clamp(0.0, 1.0),
             child: Image.asset(
-              'images/particles/dust_01.png',
+              'images/dust_01.png',
               width: widget.dust.size.toDouble(),
               height: widget.dust.size.toDouble(),
               errorBuilder: (_, __, ___) => Icon(

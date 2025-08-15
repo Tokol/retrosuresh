@@ -1,60 +1,90 @@
+// lib/main.dart
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
-import 'package:suresh_portfilo/utils/device_info.dart';
-import 'package:suresh_portfilo/utils/retro_splash_screen.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_web_plugins/url_strategy.dart';
+
 import 'arcade_landing.dart';
 import 'firebase/firebase_service.dart';
 import 'notfound404/notfound.dart';
 import 'providers/chat_provider.dart';
-import 'package:http/http.dart' as http;
-import 'package:flutter_web_plugins/url_strategy.dart';
-
-// NEW: import your 404 page
+import 'utils/device_info.dart';
+import 'utils/retro_splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy(); // pretty URLs on web
 
-  // pretty URLs
-  usePathUrlStrategy();
-
-  // Initialize providers first
   final providers = await _initializeProviders();
 
-  // Route on the OUTER MaterialApp
   runApp(
     MultiProvider(
       providers: providers,
-      child: MaterialApp(
-        title: 'Suresh’s Retro Arcade',
-        theme: ThemeData.dark(),
-        debugShowCheckedModeBanner: false,
-
-        // Known routes
-        onGenerateRoute: (settings) {
-          switch (settings.name) {
-            case '/':
-            case null:
-              return MaterialPageRoute(builder: (_) => const SplashController());
-          // Add more named pages later if you have them, e.g.:
-          // case '/arcade': return MaterialPageRoute(builder: (_) => const MyApp());
-          }
-          return null; // not handled -> onUnknownRoute
-        },
-
-        // Unknown path -> your Flutter 404
-        onUnknownRoute: (settings) => MaterialPageRoute(
-          builder: (_) => NotFoundPage(
-            requested: settings.name ?? Uri.base.path,
-          ),
-        ),
-      ),
+      child: const AppRoot(),
     ),
   );
 }
 
+class AppRoot extends StatelessWidget {
+  const AppRoot({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Suresh’s Retro Arcade',
+      theme: ThemeData.dark(),
+      debugShowCheckedModeBanner: false,
+
+      // Handle only known routes here
+      onGenerateRoute: (settings) {
+        // Browser deep-link path (e.g., "/this/does/not/exist")
+        final browserPath = _normalizedPath(Uri.base);
+
+        switch (settings.name) {
+          case '/':
+          case null:
+          // If browser path isn't root, treat it as an unknown deep link -> 404 page
+            if (browserPath != '/') {
+              return MaterialPageRoute(
+                builder: (_) => NotFoundPage(requested: browserPath),
+                settings: settings,
+              );
+            }
+            // Normal home
+            return MaterialPageRoute(builder: (_) => const SplashController());
+
+        // Add actual named pages here later:
+        // case '/arcade':
+        //   return MaterialPageRoute(builder: (_) => const ArcadeLanding());
+        }
+
+        // Unhandled -> let onUnknownRoute show the 404 page
+        return null;
+      },
+
+      // Unknown path -> interactive 404
+      onUnknownRoute: (settings) {
+        final raw = settings.name ?? Uri.base.toString();
+        final requested = Uri.tryParse(raw)?.path ?? raw;
+        return MaterialPageRoute(
+          builder: (_) => NotFoundPage(requested: requested),
+        );
+      },
+    );
+  }
+}
+
+// Normalize / strip trailing slash (except root)
+String _normalizedPath(Uri u) {
+  final path = (u.path.isEmpty ? '/' : u.path);
+  if (path.length > 1 && path.endsWith('/')) return path.substring(0, path.length - 1);
+  return path;
+}
+
+// ---------- Providers ----------
 Future<List<SingleChildWidget>> _initializeProviders() async {
   String? ip;
   Map<String, dynamic>? userAgent;
@@ -69,22 +99,20 @@ Future<List<SingleChildWidget>> _initializeProviders() async {
   }
 
   return [
-    ChangeNotifierProvider(
-      create: (_) => ChatProvider(ip: ip, device: userAgent),
-    ),
+    ChangeNotifierProvider(create: (_) => ChatProvider(ip: ip, device: userAgent)),
   ];
 }
 
 Future<String?> _getUserIP() async {
   try {
-    final response = await http.get(Uri.parse('https://api.ipify.org?format=json'));
-    if (response.statusCode == 200) {
-      return jsonDecode(response.body)['ip'] as String?;
+    final res = await http.get(Uri.parse('https://api.ipify.org?format=json'));
+    if (res.statusCode == 200) {
+      return (jsonDecode(res.body)['ip'] as String?) ?? 'unknown';
     }
   } catch (e) {
     debugPrint('Failed to fetch IP: $e');
   }
-  return null;
+  return 'unknown';
 }
 
 Future<Map<String, dynamic>?> _getUserAgent() async {
@@ -99,9 +127,9 @@ Future<Map<String, dynamic>?> _getUserAgent() async {
   return {'platform': 'non-web'};
 }
 
+// ---------- Splash -> App entry (NO nested MaterialApp) ----------
 class SplashController extends StatefulWidget {
   const SplashController({super.key});
-
   @override
   State<SplashController> createState() => _SplashControllerState();
 }
@@ -116,34 +144,25 @@ class _SplashControllerState extends State<SplashController> {
   }
 
   Future<void> _initializeApp() async {
-    final startTime = DateTime.now();
+    final start = DateTime.now();
     try {
       await FirebaseService.initialize();
 
-      final elapsed = DateTime.now().difference(startTime);
-      if (elapsed < const Duration(seconds: 3)) {
-        await Future.delayed(const Duration(seconds: 3) - elapsed);
+      // keep your retro splash visible a bit
+      final elapsed = DateTime.now().difference(start);
+      const min = Duration(seconds: 3);
+      if (elapsed < min) {
+        await Future.delayed(min - elapsed);
       }
-      if (mounted) setState(() => _isLoading = false);
     } catch (e) {
       debugPrint('Initialization error: $e');
+    } finally {
       if (mounted) setState(() => _isLoading = false);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return _isLoading ? const RetroLoadingScreen() : const MyApp();
-  }
-}
-
-// IMPORTANT: no MaterialApp here anymore.
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const ArcadeLanding();
-   // return const NotFoundPage(requested: "tet");
+    return _isLoading ? const RetroLoadingScreen() : const ArcadeLanding();
   }
 }
