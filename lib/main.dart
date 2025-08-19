@@ -7,12 +7,14 @@ import 'firebase/firebase_service.dart';
 import 'notfound404/notfound.dart';
 import 'providers/chat_provider.dart';
 import 'utils/retro_splash_screen.dart';
-
+import 'package:flutter_web_plugins/url_strategy.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  usePathUrlStrategy();
   // Web + Mobile safe init
   await FirebaseService.initialize();
+
+
 
   runApp(
     MultiProvider(
@@ -44,20 +46,24 @@ class AppRoot extends StatelessWidget {
               builder: (_) => const RetroLoadingScreen(),
               settings: settings,
             );
-
           case '/home':
             return MaterialPageRoute(builder: (_) => const ArcadeLanding());
+          default:
+          // Catch all unknown routes here
+            final requested = settings.name ?? "";
+            return MaterialPageRoute(
+              builder: (_) => NotFoundPage(requested: requested),
+            );
         }
+      },
 
-        return null;
-      },
-      onUnknownRoute: (settings) {
-        final raw = settings.name ?? Uri.base.toString();
-        final requested = Uri.tryParse(raw)?.path ?? raw;
-        return MaterialPageRoute(
-          builder: (_) => NotFoundPage(requested: requested),
-        );
-      },
+      // onUnknownRoute: (settings) {
+      //   final raw = settings.name ?? Uri.base.toString();
+      //   final requested = Uri.tryParse(raw)?.path ?? raw;
+      //   return MaterialPageRoute(
+      //     builder: (_) => NotFoundPage(requested: requested),
+      //   );
+      // },
     );
   }
 }

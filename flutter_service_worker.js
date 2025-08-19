@@ -3,11 +3,11 @@ const MANIFEST = 'flutter-app-manifest';
 const TEMP = 'flutter-temp-cache';
 const CACHE_NAME = 'flutter-app-cache';
 
-const RESOURCES = {"flutter_bootstrap.js": "a663f53921e7850b7356abcdfe53e4c0",
+const RESOURCES = {"flutter_bootstrap.js": "322b790963b534975fd72a65cb6121b9",
 "version.json": "13f798755b995a1028fbffddd65bb59c",
 "index.html": "687d9bf44939b247fafd521151616f25",
 "/": "687d9bf44939b247fafd521151616f25",
-"main.dart.js": "13e6d2b6e6b6fd535de6860a274fddf9",
+"main.dart.js": "801807324e7d27c476e66843ad446f3a",
 "404.html": "042a774af586dfdc624e79982ca105ce",
 "flutter.js": "888483df48293866f9f41d3d9274a779",
 "cursor_interop.js": "bc5d6b846f9340fa4e4f2c0a2d8cd446",
@@ -398,7 +398,7 @@ const RESOURCES = {"flutter_bootstrap.js": "a663f53921e7850b7356abcdfe53e4c0",
 "assets/AssetManifest.bin": "c16905e99352f2995a387a809c4c9f55",
 "assets/fonts/MaterialIcons-Regular.otf": "2ac9950725c710fe3382bdb3e48959e4",
 "assets/assets/AssetManifest.json": "af0b30c008d945b0a287b8974a47511a",
-"assets/assets/NOTICES": "154ebefd759463470a32c037c0089ace",
+"assets/assets/NOTICES": "7a6d8ba91e2cf3b261d406cb1dafdcc1",
 "assets/assets/sounds/select.mp3": "88697bd3993b9351cdeb21829a034f60",
 "assets/assets/sounds/camera_click.mp3": "59bf45278899fcc89ecfb9bb52f8a7ee",
 "assets/assets/sounds/shuriken.mp3": "8e1dde2fa5712adf2f8a471577ead4fc",
