@@ -88,7 +88,11 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
 
       // 7️⃣ Navigate to Home screen if mounted
       if (mounted) {
-        Navigator.pushReplacementNamed(context, "/home");
+        final currentPath = Uri.base.path; // <-- check current URL
+        if (currentPath == '/' || currentPath == '/home') {
+          Navigator.pushReplacementNamed(context, "/home");
+        }
+        // else: do nothing → NotFoundPage will be shown
       }
     } catch (e, stack) {
       debugPrint("❌ Error initializing app: $e");
