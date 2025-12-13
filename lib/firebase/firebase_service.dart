@@ -31,6 +31,20 @@ class FirebaseService {
     }
   }
 
+  static Future<String> getOpenAPIKEY() async {
+    try {
+      final doc = await _firestore
+          .collection('config')
+          .doc('OpenApi')
+          .get(const GetOptions(source: Source.server)); // Force fresh fetch
+      return doc.data()?['key'] ?? '';
+    } catch (e) {
+      throw Exception('API key fetch failed. Ensure Firestore rules allow access.');
+    }
+  }
+
+
+
   // Save message with error handling
   static Future<void> saveChatMessage({
     required String userId,

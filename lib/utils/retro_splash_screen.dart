@@ -66,7 +66,8 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
       // 4️⃣ Load assets, API key, device info, IP addresses concurrently
       await Future.wait([
         _loadAssets(),
-        _loadApiKey(),
+      //  _loadApiKey(), // if want to work with open router
+        _loadOpenApiKEY(),
         _loadDeviceInfo(),
         _loadIpAddress(),
       ]);
@@ -109,6 +110,20 @@ class _RetroLoadingScreenState extends State<RetroLoadingScreen>
     _apiKey = doc.data()?["openRouterKey"];
     _updateProgress();
   }
+
+   Future<void> _loadOpenApiKEY() async {
+
+     final doc = await FirebaseFirestore.instance
+         .collection("config")
+         .doc("OpenApi")
+         .get();
+     _apiKey = doc.data()?["Key"];
+     _updateProgress();
+
+
+
+  }
+
 
   Future<void> _loadDeviceInfo() async {
     final deviceInfoPlugin = DeviceInfoPlugin();
